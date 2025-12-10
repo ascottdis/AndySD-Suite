@@ -1,0 +1,48 @@
+# Dockerfile for Next.js apps (labs-hub, giggin-app)
+# Build: docker build -t andysd/labs-hub:latest -f apps/labs-hub/Dockerfile .
+# Run: docker run -p 3000:3000 andysd/labs-hub:latest
+
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Install pnpm
+RUN npm install -g pnpm@10.24.0
+
+# Copy workspace files
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+
+# Copy all packages and apps
+COPY packages ./packages
+COPY apps ./apps
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Build Next.js app
+RUN pnpm --filter labs-hub build
+
+# Production image
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install pnpm (needed for start command)
+RUN npm install -g pnpm@10.24.0
+
+# Copy built app from builder
+COPY --from=builder /app/apps/labs-hub/.next ./apps/labs-hub/.next
+COPY --from=builder /app/apps/labs-hub/public ./apps/labs-hub/public
+COPY --from=builder /app/apps/labs-hub/package.json ./apps/labs-hub/package.json
+COPY --from=builder /app/pnpm-workspace.yaml ./
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/pnpm-lock.yaml ./
+
+# Install production dependencies only
+RUN pnpm install --frozen-lockfile --prod
+
+# Expose port
+EXPOSE 3000
+
+# Start Next.js app
+CMD ["pnpm", "--filter", "labs-hub", "start"]

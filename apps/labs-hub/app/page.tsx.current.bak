@@ -1,0 +1,7 @@
+// Backup of current `page.tsx` before restoring legacy version
+import PortfolioHome from "./_components/PortfolioHome";
+
+export default function Page() {
+  return <PortfolioHome />;
+}
+

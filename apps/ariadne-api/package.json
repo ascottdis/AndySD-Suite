@@ -1,0 +1,17 @@
+{
+  "name": "ariadne-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@capacitor/app": "8.0.0",
+    "@capacitor/cli": "8.0.0",
+    "@capacitor/core": "8.0.0",
+    "@capacitor/haptics": "8.0.0",
+    "@capacitor/keyboard": "8.0.0",
+    "@capacitor/status-bar": "8.0.0"
+  }
+}

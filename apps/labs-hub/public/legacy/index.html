@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AndySD | Cinematic Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Using Orbitron (Bold/Tech) and Lexend Deca (Clean Body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&family=Bangers&family=Lexend+Deca:wght@300;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles & Core Layout */
+    body { background-color: #050507; color: #FFFFFF; font-family: 'Lexend Deca', sans-serif; transition: background-color 0.8s; }
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    .font-comic { font-family: 'Bangers', cursive; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .section { min-height: 90vh; padding-top: 5rem; padding-bottom: 5rem; display: flex; align-items: center; } 
+    .section-content { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; width: 100%; }
+    .section-title { font-size: 2.8rem; font-family: 'Orbitron', sans-serif; font-weight: bold; margin-bottom: 1rem; text-shadow: 0 3px 20px #00fff9aa, 0 0 1px #fff; }
+    .brand-accent { color: #00fff9; font-weight: bold; text-shadow: 0 0 20px #00fff944, 0 1px 0 #fff; }
+    .glass { background: rgba(25,25,36,0.5); backdrop-filter: blur(8px); }
+
+    /* --- ADVANCED BACKGROUND FEATURE: DATA GRID FLOW (RETAINED) --- */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Below content, above background color */
+        pointer-events: none;
+        opacity: 0.08; /* Very subtle, low glow */
+        background-image: 
+            repeating-linear-gradient(0deg, rgba(0,255,255,.1) 0, rgba(0,255,255,.1) 1px, transparent 1px, transparent 100px),
+            repeating-linear-gradient(90deg, rgba(255,0,255,.1) 0, rgba(255,0,255,.1) 1px, transparent 1px, transparent 100px);
+        background-size: 100px 100px;
+        animation: background-flow 30s linear infinite;
+        transition: opacity 0.5s;
+    }
+
+    @keyframes background-flow {
+        from { background-position: 0 0; }
+        to { background-position: 100px 100px; } 
+    }
+    
+    /* --- CORE LAYOUT RESET AND ENTRANCE STYLES --- */
+    html.scroll-locked, body.scroll-locked { overflow: hidden !important; height: 100%; width: 100%; }
+    
+    /* 1. ENTRANCE SCREEN (The Signature) */
+    #entrance-container {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        background-color: #050507;
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    }
+    
+    /* Glitch Keyframes (RETAINED) */
+    @keyframes glitch-flicker {
+        0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00fff9; transform: translate(0); }
+        10% { text-shadow: none; transform: translate(-1px, 1px); }
+        11% { text-shadow: 4px -4px #ff00ff, -4px 4px #00fff9; transform: translate(2px, 0); }
+        15% { text-shadow: 2px 2px #ff00ff, -2px -2px #00fff9; transform: translate(0); }
+        18% { text-shadow: 4px -4px #ff00ff, -4px 4px #00fff9; transform: translate(2px, 0); }
+        20% { text-shadow: -1px 3px #ff00ff, 1px -3px #00fff9; transform: translate(0); }
+        30% { text-shadow: -2px 2px #ff00ff, 2px -2px #00fff9; transform: translate(1px, -1px); }
+        40% { text-shadow: 2px -2px #ff00ff, -2px 2px #00fff9; transform: translate(-1px, 1px); }
+        50% { text-shadow: -3px 0 #ff00ff, 3px 0 #00fff9; transform: translate(0, 2px); }
+        60% { text-shadow: 0 3px #ff00ff, 0 -3px #00fff9; transform: translate(-2px, 0); }
+        70% { text-shadow: 2px 2px #ff00ff, -2px -2px #00fff9; transform: translate(0); }
+        80% { text-shadow: -2px -2px #ff00ff, 2px 2px #00fff9; transform: translate(1px, 1px); }
+        90% { text-shadow: 3px 3px #ff00ff, -3px -3px #00fff9; transform: translate(-1px, -1px); }
+        100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00fff9; transform: translate(0); }
+    }
+
+    /* Signature Title (RETAINED) */
+    .signature-title {
+        cursor: pointer;
+        font-family: 'Orbitron', sans-serif; 
+        font-size: 5rem;
+        line-height: 1;
+        font-weight: 900; 
+        letter-spacing: -0.05em; 
+        text-transform: uppercase;
+        text-align: center;
+        background: linear-gradient(120deg, #a7f3d0, #ff00ff, #00fff9, #fde047); 
+        background-size: 300% 300%; 
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 4px 4px 0 #1f2937, 8px 8px 15px #00fff9aa; 
+        animation: color-flow 8s ease-in-out infinite; 
+        z-index: 10;
+        transition: all 0.1s linear; 
+        transform-style: preserve-3d;
+    }
+
+    .signature-title:hover {
+        animation: glitch-flicker 0.1s steps(1) infinite, color-flow 8s ease-in-out infinite; 
+    }
+
+    /* Falling Letter Animation (RETAINED) */
+    .char { 
+        opacity: 0; 
+        display: inline-block; 
+        transform: translateY(-50px) perspective(500px) rotateX(90deg); 
+        transition: opacity 0.4s ease-out, transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+        transform-origin: 50% 50%;
+    }
+    .char.visible { 
+        opacity: 1; 
+        transform: translateY(0) perspective(500px) rotateX(0deg); 
+    }
+    /* NEW: Shatter Class (Dynamic in JS) */
+    .char.shattered {
+        opacity: 0 !important;
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.5);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out !important;
+    }
+
+    @keyframes color-flow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @media (min-width: 768px) {
+        .signature-title { 
+            font-size: 8rem; 
+            letter-spacing: -0.1em; 
+            text-shadow: 6px 6px 0 #1f2937, 10px 10px 20px #00fff9aa; 
+        }
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 2. NAVIGATION HUB (The Machine Frame) - UPDATED STYLES */
+    /* ---------------------------------------------------- */
+    #nav-hub {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        background-color: #050507;
+        opacity: 0;
+        pointer-events: none; 
+        transition: opacity 0.1s ease-out; /* Control opacity separately */
+        
+        /* Initial state before opening */
+        clip-path: inset(50% 50%);
+        animation-fill-mode: forwards;
+        transform: scale(1);
+    }
+
+    #nav-hub.visible {
+        opacity: 1;
+        pointer-events: auto;
+        animation: frame-open 0.5s ease-in-out forwards;
+    }
+    
+    #nav-hub.closing {
+        animation: frame-close 0.4s ease-in-out forwards;
+    }
+
+    /* KUNJ HIGHLIGHT - Central focus box */
+    #hub-frame-content {
+        position: relative;
+        padding: 3rem;
+        background: rgba(18, 18, 25, 0.9);
+        border: 2px solid #00fff9;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.2);
+        max-width: 90%;
+        text-align: center;
+        
+        /* The Kunj Pulse Effect */
+        animation: pulse-kunj 4s ease-in-out infinite alternate;
+        transition: all 0.3s;
+    }
+
+    /* KUNJ PULSE KEYFRAMES */
+    @keyframes pulse-kunj {
+        from { box-shadow: 0 0 40px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.2); }
+        to { box-shadow: 0 0 60px rgba(0, 255, 255, 0.5), inset 0 0 30px rgba(0, 255, 255, 0.4); }
+    }
+
+    /* FRAME OPEN ANIMATION */
+    @keyframes frame-open {
+        0% { clip-path: inset(50% 50%); }
+        100% { clip-path: inset(0% 0%); }
+    }
+    
+    /* FRAME CLOSE ANIMATION */
+    @keyframes frame-close {
+        0% { clip-path: inset(0% 0%); }
+        100% { clip-path: inset(50% 50%); }
+    }
+    
+    /* LINK STYLING */
+    .hub-link {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        color: #999;
+        transition: color 0.3s, text-shadow 0.3s, transform 0.1s;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+    
+    /* LINK HOVER EFFECT */
+    .hub-link:hover {
+        color: #fff;
+        text-shadow: 0 0 15px #0ff, 0 0 25px #00fff9aa;
+        transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+        .hub-link { font-size: 1.5rem; }
+    }
+
+    /* 3. MAIN CONTENT WRAPPER (RETAINED) */
+    #main-content-wrapper {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s ease-in-out;
+        z-index: 2; 
+        position: relative;
+    }
+
+    #main-content-wrapper.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    /* --- EXISTING APP STYLES (RETAINED FOR PORTFOLIO SECTION) --- */
+    .app-card { position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; border-radius: 1rem; cursor: pointer; }
+    .app-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 10px 40px #00fff944; }
+    
+    /* FX backgrounds for each app (RETAINED) */
+    .flippin-bg::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at center, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 12px 12px; animation: pulseburst 2s infinite; }
+    @keyframes pulseburst { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
+    .cryptoacademy-bg::before { content:''; position:absolute; inset:0; background-image: linear-gradient(#0ff 1px, transparent 1px), linear-gradient(90deg,#0ff 1px, transparent 1px); background-size:40px 40px; opacity:.15; box-shadow: inset 0 0 30px rgba(0,255,255,.4); }
+    .cyberacademy-bg::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(0deg, rgba(255,0,0,0.15) 0px, rgba(255,0,0,0.15) 2px, transparent 2px, transparent 4px); animation: redpulse 3s infinite; }
+    @keyframes redpulse { 0%,100%{opacity:.15;} 50%{opacity:.3;} }
+    .bamboozled-bg::before { content:''; position:absolute; inset:0; background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="20">🍃</text></svg>'); background-size:40px; animation: drift 12s linear infinite; }
+    @keyframes drift { from{background-position:0 100%;} to{background-position:0 -100%;} }
+    .gigit-bg::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 10px, transparent 10px 20px); }
+    .lifesupport-bg::before { content:''; position:absolute; inset:0; box-shadow: 0 0 80px 40px indigo; border-radius:50%; opacity:.2; }
+    .linkspy-bg::before { content:''; position:absolute; inset:0; background-image: linear-gradient(to bottom, rgba(0,255,255,.2), transparent 50%); background-size:2px 40px; animation:datarain 1s linear infinite; }
+    @keyframes datarain { from{background-position:0 -40px;} to{background-position:0 0;} }
+    .mustache-bg::before { content:''; position:absolute; inset:0; background:conic-gradient(from 0deg,#fcd34d22,#22c55e22,#f9731622,#fcd34d22); animation:rotate 12s linear infinite; }
+    @keyframes rotate { to{transform:rotate(360deg);} }
+    .ensight-bg::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle 2px at var(--x,50%) var(--y,50%), pink, transparent); animation:wiggle 6s infinite alternate; }
+    @keyframes wiggle { from{transform:translateX(-10px);} to{transform:translateX(10px);} }
+    .mirror-bg::before { content:''; position:absolute; inset:0; background: linear-gradient(120deg, rgba(255,255,255,.2) 0%, transparent 60%); background-size:200% 200%; animation: sheen 4s infinite; }
+    @keyframes sheen { from{background-position:-200% 0;} to{background-position:200% 0;} }
+    .artperiod-bg::before { content:''; position:absolute; inset:0; background: radial-gradient(circle 120px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.15), transparent 80%); pointer-events:none; }
+    .tidalsync-bg::before { content:''; position:absolute; inset:0; background: radial-gradient(circle at 70% 30%, rgba(0, 192, 255, 0.3), transparent 70%); animation: breath 8s ease-in-out infinite alternate; }
+    @keyframes breath { 0% { opacity: 0.1; } 100% { opacity: 0.3; } }
+    .flippinout-anim{display:inline-flex;gap:.15em;align-items:flex-end}
+    .flippinout-anim .part-flippi span{display:inline-flex;transform-origin:50% 50%;animation:flipY 1.4s cubic-bezier(.2,.6,.2,1) infinite}
+    @keyframes flipY{0%,20%{transform:rotateX(0)}50%{transform:rotateX(180deg)}80%,100%{transform:rotateX(360deg)}}
+    .flippinout-anim .part-n{display:inline-block;margin-left:.05em;animation:pulseN 1.8s ease-in-out infinite}
+    @keyframes pulseN{0%,100%{transform:scale(1);text-shadow:0 0 0 rgba(255,255,255,0)}50%{transform:scale(1.2);text-shadow:0 0 16px rgba(255,255,255,.6)}}
+    .flippinout-anim .part-out span{display:inline-flex;animation:blast 2.2s cubic-bezier(.2,.7,.2,1) infinite;transform-origin:50% 50%}
+    @keyframes blast{0%{opacity:1;transform:translate(0,0) scale(1)}60%{opacity:.85;transform:translate(14px,-10px) scale(1.25)}100%{opacity:0;transform:translate(28px,-18px) scale(1.35)}}
+    .art-logo svg{filter:drop-shadow(0 2px 12px rgba(255,255,255,.25))}
+    .art-logo .paren{stroke-linecap:round;stroke-linejoin:round}
+    
+    @keyframes footer-glow-border {
+        0%   { box-shadow: 0 -2px 10px #d946ef; }
+        100% { box-shadow: 0 -2px 10px #06b6d4; }
+    }
+    footer { border-top: none; animation: footer-glow-border 15s infinite alternate; }
+    
+    #appPreviewModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 10000; display: none; place-items: center; padding: 1rem; backdrop-filter: blur(12px); }
+    .preview-panel { width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; border-radius: 1.5rem; background: rgba(20, 20, 30, 0.95); border: 3px solid #00fff9; box-shadow: 0 0 50px #00fff966, 0 0 20px #000; padding: 2rem; position: relative; animation: fadeInZoom 0.3s ease-out forwards; }
+    @keyframes fadeInZoom { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    @media (max-width: 640px) { .preview-panel { border-radius: 0.75rem; border-width: 2px; padding: 1.5rem; max-height: 95vh; } }
+  </style>
+</head>
+<body class="bg-[#050507] text-white scroll-locked">
+
+  <!-- 1. ENTRANCE SCREEN (The Signature) -->
+  <div id="entrance-container">
+      <h1 id="signature-title" class="signature-title font-thin tracking-widest text-center">
+        <!-- Text injected here by JS -->
+      </h1>
+  </div>
+  
+  <!-- 2. NAVIGATION HUB (The Central Frame) -->
+  <div id="nav-hub">
+      <div id="hub-frame-content" class="flex flex-col items-center">
+          <p class="text-xs font-mono text-cyan-400 mb-6">/NAV-PROTOCOL-INIT/</p>
+          <div id="hub-links-container" class="flex flex-col">
+              <!-- Links will be dynamically populated/managed here -->
+          </div>
+          <p class="text-xs font-mono text-gray-600 mt-6">STATUS: ONLINE</p>
+      </div>
+  </div>
+
+  <!-- 3. MAIN CONTENT (The Destination) - Initially Hidden -->
+  <div id="main-content-wrapper">
+    <!-- HOME SECTION (The Landing Page after the transition) -->
+    <section id="home" class="section flex flex-col items-center justify-center text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-semibold mb-4 font-orbitron brand-accent">The Cinematic Portfolio</h2>
+        <p class="text-xl md:text-3xl font-semibold mb-4 text-cyan-200">Cinematic, intelligent tools for clarity, wellness, creativity, and mastery.</p>
+        <p class="text-lg md:text-xl text-gray-200 max-w-xl mx-auto">Empowering people to change their lives and communities through beautiful, bold, and transformative technology.</p>
+      </div>
+    </section>
+
+    <!-- VISION SECTION -->
+    <section id="vision" class="section glass">
+      <div class="section-content text-center">
+        <h2 class="section-title brand-accent">Blueprint for Better Living</h2>
+        <p class="text-xl max-w-3xl mx-auto mt-2">
+          We build more than software—we architect **digital instruments** designed for personal transformation. AndySD's vision is to fuse **cinematic aesthetics** with **practical AI**, creating tools that don't just solve problems, but **elevate your entire experience**.
+          <br><br>
+          We aim for **real-world impact**: providing clarity, unlocking creative income, enhancing wellness, and guiding you toward personal and professional mastery, regardless of your starting point.
+        </p>
+      </div>
+    </section>
+    
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="section bg-[#090b13]">
+      <div class="section-content">
+        <h2 class="section-title brand-accent text-center mb-8">Featured Apps (Click to Expand)</h2>
+        <div id="appsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- App cards will be injected here by JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- MISSION SECTION -->
+    <section id="mission" class="section glass">
+      <div class="section-content text-center">
+        <h2 class="section-title brand-accent">Our Core Directive: The Fusion of Form & Function</h2>
+        <p class="text-xl max-w-2xl mx-auto mt-2">
+          We reject 'app bloat.' Our mission is to engineer **intelligent digital companions** that actively drive your success. This means pushing beyond simple utility to deliver a true personal superpower.
+        </p>
+        <span class="text-lg text-gray-200 block mt-6 max-w-2xl mx-auto">
+          <ul class="list-none space-y-4">
+            <li class="flex items-start justify-center">
+              <span class="text-cyan-400 mr-2">—</span>
+              <span><strong class="text-white">The Upgrade (Impact):</strong> Transforming daily inertia into tangible real-world success, whether that's financial freedom, mastery of a skill, or mental clarity.</span>
+            </li>
+            <li class="flex items-start justify-center">
+              <span class="text-cyan-400 mr-2">—</span>
+              <span><strong class="text-white">The Flow (Design):</strong> Architecting **next-level, intuitive UI/UX** that makes complex, intelligent tools feel effortless and deeply engaging.</span>
+            </li>
+            <li class="flex items-start justify-center">
+              <span class="text-cyan-400 mr-2">—</span>
+              <span><strong class="text-white">The Algorithm (Intelligence):</strong> Infusing every product with **practical AI** to anticipate needs, guide decisions, and automate positive habits.</span>
+            </li>
+          </ul>
+        </span>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section glass">
+      <div class="section-content text-center">
+        <h2 class="section-title brand-accent">Creative Partnerships & Services</h2>
+        <p class="text-lg max-w-2xl mx-auto mb-8">
+          Need a co-pilot for your venture? AndySD offers specialized design and development services for founders and brands ready to launch the next generation of intelligent, aesthetic products.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-4xl mx-auto">
+          <div class="bg-[#101114]/80 rounded-xl p-6 border border-cyan-700 glass">
+            <h3 class="text-2xl font-orbitron text-cyan-400 mb-2">Product Architecture & AI</h3>
+            <ul class="list-disc list-inside text-lg space-y-1">
+              <li>Custom web & mobile development</li>
+              <li>**AI-powered feature design**</li>
+              <li>Rapid MVP & demo creation</li>
+            </ul>
+          </div>
+          <div class="bg-[#101114]/80 rounded-xl p-6 border border-rose-400 glass">
+            <h3 class="text-2xl font-orbitron text-rose-300 mb-2">Brand Velocity & Strategy</h3>
+            <ul class="list-disc list-inside text-lg space-y-1">
+              <li>Cinematic brand storytelling</li>
+              <li>Market positioning & Naming</li>
+              <li>Roadmap & pitch deck refinement</li>
+            </ul>
+          </div>
+          <div class="bg-[#101114]/80 rounded-xl p-6 border border-yellow-500 glass">
+            <h3 class="text-2xl font-orbitron text-yellow-300 mb-2">Design & UX Prototyping</h3>
+            <ul class="list-disc list-inside text-lg space-y-1">
+              <li>Immersive UI/UX design</li>
+              <li>High-fidelity prototyping</li>
+              <li>User journey mapping for clarity</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+          <a href="#contact" class="inline-block bg-cyan-400 hover:bg-cyan-600 text-black font-bold py-3 px-8 rounded-full shadow-lg mt-4 text-xl transition">Contact AndySD</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story" class="section glass">
+      <div class="section-content max-w-3xl mx-auto flex flex-col items-center text-center">
+        <h2 class="section-title brand-accent">My Story</h2>
+        <p class="text-xl mt-4">
+          <span class="brand-accent font-semibold text-3xl">Hey, I'm Andrew ("AndySD").</span><br>
+          I started this brand from the ground up—literally from the streets—after losing everything but my vision for better, more empowering technology.<br><br>
+          Each app in this portfolio is inspired by real struggles, relentless curiosity, and a drive to create practical hope. If I can do this, so can you—and I want to build the tools that make it possible.<br><br>
+          <span class="text-cyan-200">AndySD is for the dreamers, the doers, the healers, the creators, the survivors—and anyone ready to flip the script on their story.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section glass">
+      <div class="section-content text-center">
+        <h2 class="section-title brand-accent">Get In Touch</h2>
+        <p class="text-lg mb-6">Interested in working together, launching your own app, or collaborating?  
+          <br>Let's build something legendary.</p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-6">
+          <div>
+            <span class="block font-bold text-xl mb-1">Email:</span>
+            <a href="mailto:andysdis.dev@gmail.com" class="text-cyan-300 underline text-lg">andysdis.dev@gmail.com</a>
+          </div>
+          <div>
+            <span class="block font-bold text-xl mb-1">GitHub:</span>
+            <a href="https://github.com/andysd-com" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline text-lg">github.com/andysd-com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="w-full text-center py-4 text-gray-400 text-sm bg-black/60">
+      Crafted with <span class="text-cyan-300 font-bold">AndySD</span> energy &mdash; <span class="font-mono">2025</span><br>
+      <span class="text-xs">All content © AndySD. Permission granted to remix for positive impact.</span>
+    </footer>
+  </div>
+
+  <!-- App Preview Modal (Retained functionality) -->
+  <div id="appPreviewModal" style="display: none;" onclick="closeAppPreview()">
+    <div id="previewPanel" class="preview-panel" onclick="event.stopPropagation()">
+      <button onclick="closeAppPreview()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition p-2 rounded-full bg-white/10 hover:bg-white/20 z-10" aria-label="Close Modal">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+
+      <div id="previewHeader" class="text-center mb-6"></div>
+      
+      <div id="previewBody" class="grid md:grid-cols-2 gap-8">
+        <div id="previewDetails" class="space-y-4"></div>
+        <div id="previewDemo" class="p-4 rounded-lg bg-black/50 border border-cyan-800/50"></div>
+      </div>
+
+      <div id="previewFooter" class="text-center mt-8"></div>
+    </div>
+  </div>
+
+  <script>
+    // --- App Data (Completed) ---
+    const APPS = [
+      { id:'giggin', title:"GiGGiN’", subtitle:'Side-hustle & gig planner', bg:'gigit-bg', gradient:'from-slate-900 to-cyan-800', border:'border-cyan-500/30', titleClass:'font-orbitron text-cyan-200', subClass:'text-cyan-100', features:['Track gigs, pay, and deadlines','Route planner + maps integration','Export to JSON for sharing'], longDescription: "The definitive tool for the modern side-hustler. **GiGGiN'** combines smart scheduling, dynamic pay tracking, and real-time route optimization. Stop managing gigs in spreadsheets and start seeing real profit growth. This app provides clarity on income streams, automatically calculating total pay, taxes, and time spent on the job.", demoContent: `<p class="text-sm text-gray-400 mb-2">Simulated Gig Dashboard:</p><div class="space-y-2 text-xs font-mono"><div class="flex justify-between p-2 bg-cyan-900/40 rounded"><span>Uber (4h)</span><span class="text-green-300">$125.00</span></div><div class="flex justify-between p-2 bg-cyan-900/40 rounded"><span>Freelance (2h)</span><span class="text-green-300">$80.00</span></div><p class="text-center mt-3"><a href="#" class="bg-cyan-600 hover:bg-cyan-500 text-white p-2 rounded-lg transition text-sm">Add New Gig</a></p></div>`, cta:{ text:'Organize Your Hustle', href:'#' } },
+      { id:'artperiod', title:"ART(period)", subtitle:'AI art scanner & provenance engine', bg:'artperiod-bg', gradient:'from-slate-900 to-fuchsia-800', border:'border-fuchsia-500/30', titleClass:'font-serif text-fuchsia-200', subClass:'text-fuchsia-100', logoHTML:`<div class="art-logo mt-2"><svg width="220" height="56" viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ART(period) logo"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#fde68a"/></linearGradient></defs><text x="0" y="38" font-family="'Playfair Display', serif" font-size="36" font-weight="800" fill="url(#g1)">ART</text><path class="paren" d="M132,12 C120,20 120,36 132,44" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><text x="138" y="38" font-family="'Lexend Deca', sans-serif" font-size="28" fill="#ffffffcc">period</text><path class="paren" d="M210,12 C222,20 222,36 210,44" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><circle class="dot" cx="203" cy="42" r="2.8" fill="#f0abfc"/></svg></div>`, features:['Scan & identify artworks','Trace ownership & provenance','Detect fraud & overpainting'], longDescription: "The future of art authentication. **ART(period)** uses AI and blockchain principles to create an immutable ledger of artwork provenance. Scan a piece to instantly check its history, identify suspicious alterations, and ensure you're dealing with the real deal. Designed for collectors and museums.", demoContent: `<p class="text-sm text-gray-400 mb-2">Scan Result Mockup:</p><div class="bg-fuchsia-900/40 p-3 rounded text-sm space-y-1"><p><span class="text-fuchsia-300">ID:</span> #78B2-X-A49F</p><p><span class="text-fuchsia-300">Artist:</span> Unknown (Late 19th C.)</p><p><span class="text-fuchsia-300">Status:</span> Provenance Chain <span class="text-green-400 font-bold">SOLID</span></p><p><span class="text-fuchsia-300">Integrity:</span> Pigment Analysis <span class="text-yellow-400 font-bold">CAUTION (Minor Overpainting)</span></p></div>`, cta:{ text:'Start Art Scanning', href:'#' } },
+      { id:'flippinout', title:"FlippiN’ Out", htmlTitle:`<span class="flippinout-anim"><span class="part-flippi font-comic"><span>F</span><span>l</span><span>i</span><span>p</span><span>p</span><span>i</span></span><span class="part-n font-comic">N’</span><span class="part-out font-comic"><span>O</span><span>U</span><span>T</span></span></span>`, subtitle:'Gamified resale radar', bg:'flippin-bg', gradient:'from-emerald-900 to-lime-700', border:'border-lime-500/30', titleClass:'text-lime-100', subClass:'text-emerald-100', features:['Marketplace aggregator','Heatmaps & pickup routes','ROI scanner + leaderboard'], longDescription: "A game for profit seekers. **FlippiN’ Out** aggregates listing data across major resale platforms, flagging items with maximum markup potential. The gamified ROI scanner challenges you to find the best deals and climb the global flipper leaderboard. Maximize efficiency, minimize time spent.", demoContent: `<p class="text-sm text-gray-400 mb-2">ROI Scanner:</p><div class="space-y-2 text-sm"><input type="number" placeholder="Cost Price ($)" class="w-full p-2 rounded bg-gray-700 text-white border-0"><input type="number" placeholder="Est. Sell Price ($)" class="w-full p-2 rounded bg-gray-700 text-white border-0"><div class="text-center font-orbitron text-2xl p-2 rounded bg-lime-600/70 mt-3">Est. ROI: <span class="text-lime-200">240%</span></div></div>`, cta:{ text:'Start FlippiN’', href:'#' } },
+      { id:'tidalsync', title:"TidalSync", subtitle:'Circadian rhythm & sleep anchor', bg:'tidalsync-bg', gradient:'from-blue-950 to-teal-800', border:'border-teal-500/30', titleClass:'font-orbitron text-teal-200', subClass:'text-blue-100', features:['Adaptive wake/sleep cycles','Ambient soundscapes','Phase-shift guidance'], longDescription: "Sync your life with your body's natural clock. **TidalSync** uses AI to analyze your sleep patterns and daily habits, guiding you gently toward an optimized circadian rhythm. Perfect for shift workers, travelers, or anyone seeking deep, restorative rest.", demoContent: `<p class="text-sm text-gray-400 mb-2">Current Rhythm Status:</p><div class="bg-teal-900/40 p-3 rounded text-sm space-y-2"><p><span class="text-teal-300">Phase:</span> Early Bird (Optimized)</p><p><span class="text-teal-300">Suggested Bedtime:</span> 10:45 PM</p><div class="h-4 bg-gray-700 rounded-full overflow-hidden"><div class="h-full bg-teal-400" style="width: 75%;"></div></div><p class="text-xs text-center text-gray-300">Circadian Alignment: 75%</p></div>`, cta:{ text:'Find Your Rhythm', href:'#' } },
+      { id:'cryptoacademy', title:'Crypto Academy', subtitle:'Neon grid learning vibes', bg:'cryptoacademy-bg', gradient:'from-slate-950 to-cyan-900', border:'border-cyan-400/30', titleClass:'font-orbitron text-cyan-200', subClass:'text-cyan-100', features:['Foundations → advanced','Hands‑on quests','Review flashcards'], longDescription: "Decode the future of finance. The Crypto Academy provides a structured, quest-based learning environment, taking you from basic blockchain concepts to advanced DeFi strategies. Learn securely and master the terminology necessary to navigate the digital asset landscape.", demoContent: '<div class="text-center py-8"><p class="text-lg text-cyan-400 mb-2">Quest Log (Module 1)</p><div class="text-xs text-gray-400">Complete "What is a Block?" (✅)<br>Start "Gas Fees & Wallets" (⏳)</div></div>', cta:{ text:'Explore the Syllabus', href:'#' } },
+      { id:'cyberacademy', title:'Cyber Academy', subtitle:'Scanlines + pulse', bg:'cyberacademy-bg', gradient:'from-slate-900 to-rose-900', border:'border-rose-400/30', titleClass:'font-orbitron text-rose-200', subClass:'text-rose-100', features:['Blue/Purple team labs','Safe/ethical training','Progress tracking'], longDescription: "Train your defense with Cyber Academy. Offering practical, ethical training in defensive (Blue Team) and hybrid (Purple Team) security skills. Work through simulated labs and real-world scenarios to build a formidable defense against digital threats. Start with the basics of network forensics and work up to advanced penetration testing methodology.", demoContent: '<div class="text-center py-8"><p class="text-lg text-rose-400 mb-2">Defense Status</p><p class="text-sm text-gray-400">Threat Level: <span class="text-red-500 font-bold">HIGH</span></p><div class="w-full h-2 bg-gray-700 rounded-full mt-2"><div class="h-full bg-rose-500" style="width: 85%;"></div></div><p class="text-xs text-center mt-1">Firewall Integrity: 85%</p></div>', cta:{ text:'Access the Protocol', href:'#' } },
+      { id:'mustache', title:'Mustache Monocle', subtitle:'Venture scout & trend scanner', bg:'mustache-bg', gradient:'from-amber-900 to-yellow-700', border:'border-yellow-500/30', titleClass:'font-serif text-yellow-300', subClass:'text-amber-100', features:['Sector-specific trend spotting','Pre-IPO momentum analysis','Sentiment correlation engine'], longDescription: "A sophisticated tool for identifying nascent market opportunities. **Mustache Monocle** uses deep learning to scan regulatory filings, patent applications, and social sentiment, projecting future growth curves for high-potential startups and emerging sectors. It's the competitive edge for early-stage investors.", demoContent: `<p class="text-sm text-gray-400 mb-2">Trend Report: Quantum Computing</p><div class="bg-yellow-900/40 p-3 rounded text-sm space-y-2"><p><span class="text-yellow-300">Signal Strength:</span> <span class="text-green-400 font-bold">MAXIMUM</span></p><p><span class="text-yellow-300">Momentum Index:</span> 92%</p><p class="text-xs text-center mt-1">Projected 5Y Growth: +400%</p></div>`, cta:{ text:'Scan the Horizon', href:'#' } },
+      { id:'ensight', title:'Ensight', subtitle:'Personalized learning pathways', bg:'ensight-bg', gradient:'from-slate-800 to-indigo-800', border:'border-indigo-500/30', titleClass:'font-orbitron text-indigo-300', subClass:'text-gray-100', features:['Adaptive curriculum generation','Skill gap analysis','Resource aggregation'], longDescription: "**Ensight** is an intelligent mentor that maps your current knowledge against your career goals. It generates a personalized, dynamically adjusting curriculum, pulling in relevant articles, courses, and interactive lessons. Stop guessing what to learn next; let the algorithm guide your mastery.", demoContent: `<p class="text-sm text-gray-400 mb-2">Learning Path Status:</p><div class="bg-indigo-900/40 p-3 rounded text-sm space-y-2"><p><span class="text-indigo-300">Current Goal:</span> Full Stack Mastery</p><p><span class="text-indigo-300">Next Focus:</span> Serverless Architectures</p><div class="h-4 bg-gray-700 rounded-full overflow-hidden mt-2"><div class="h-full bg-indigo-400" style="width: 60%;"></div></div><p class="text-xs text-center mt-1">Mastery Progress: 60%</p></div>`, cta:{ text:'Map Your Mastery', href:'#' } },
+      { id:'mirror', title:'The Mirror', subtitle:'Self-reflect & journal AI', bg:'mirror-bg', gradient:'from-gray-900 to-blue-900', border:'border-blue-400/30', titleClass:'font-serif text-blue-200', subClass:'text-gray-100', features:['Secure, private journaling','Emotional pattern recognition','Growth metric tracking'], longDescription: "Your private, non-judgmental AI companion for personal growth. **The Mirror** analyzes your journal entries, identifying subconscious thought patterns, emotional triggers, and cycles of behavior. It provides gentle, actionable insights, helping you break negative loops and track your resilience over time.", demoContent: `<p class="text-sm text-gray-400 mb-2">Insight Snapshot:</p><div class="bg-blue-900/40 p-3 rounded text-sm space-y-2"><p><span class="text-blue-300">Pattern Detected:</span> Avoidance (Weekly Peak)</p><p><span class="text-blue-300">Insight:</span> Focus on small, achievable tasks on Mondays to build momentum.</p><p class="text-xs text-center mt-1">Resilience Score: 7.2/10</p></div>`, cta:{ text:'Begin Reflection', href:'#' } },
+      { id:'lifesupport', title:'Life Support', subtitle:'Crisis resource navigator', bg:'lifesupport-bg', gradient:'from-black to-indigo-900', border:'border-red-500/30', titleClass:'font-orbitron text-red-400', subClass:'text-white', features:['Verified, localized help lines','Real-time nearest centers','Privacy-first encryption'], longDescription: "A life-saving tool built with compassion. **Life Support** provides immediate access to verified, localized crisis resources, mental health hotlines, shelters, and emergency medical services. Designed for ultimate reliability and built with privacy and anonymity as the highest priority.", demoContent: `<p class="text-sm text-gray-400 mb-2 text-center">Finding Nearest Help...</p><div class="bg-red-900/40 p-3 rounded text-sm space-y-2 text-center"><p class="text-red-300 font-bold">988: Suicide & Crisis Lifeline</p><p class="text-sm">Call/Text 24/7. Confidential.</p><p class="text-xs text-yellow-400 mt-2">Connecting to Local Resource Center...</p></div>`, cta:{ text:'Immediate Help', href:'#' } },
+    ];
+
+    // --- Core UI Management ---
+    const ENTRANCE_TEXT = "ANDYSD";
+    const NAV_SECTIONS = [
+      { id: 'home', title: 'Home', icon: '🏠' },
+      { id: 'vision', title: 'Vision', icon: '✨' },
+      { id: 'portfolio', title: 'Portfolio', icon: '💻' },
+      { id: 'mission', title: 'Core Directive', icon: '🎯' },
+      { id: 'services', title: 'Partnerships', icon: '🤝' },
+      { id: 'story', title: 'My Story', icon: '👤' },
+      { id: 'contact', title: 'Contact', icon: '📧' },
+    ];
+
+    const refs = {};
+
+    window.onload = () => {
+        // Collect DOM references
+        refs.html = document.documentElement;
+        refs.body = document.body;
+        refs.signatureTitle = document.getElementById('signature-title');
+        refs.entranceContainer = document.getElementById('entrance-container');
+        refs.navHub = document.getElementById('nav-hub');
+        refs.hubLinksContainer = document.getElementById('hub-links-container');
+        refs.mainContentWrapper = document.getElementById('main-content-wrapper');
+        refs.appsGrid = document.getElementById('appsGrid');
+        refs.appPreviewModal = document.getElementById('appPreviewModal');
+
+        // Start the application sequence
+        initSignature();
+        renderApps();
+        renderHubLinks();
+    };
+
+    /**
+     * Stage 1: Signature Entrance
+     */
+    function initSignature() {
+        refs.signatureTitle.innerHTML = ENTRANCE_TEXT.split('').map(char => 
+            `<span class="char" style="transition-delay: ${Math.random() * 0.5}s">${char}</span>`
+        ).join('');
+
+        // Start animation after a small delay
+        setTimeout(() => {
+            Array.from(refs.signatureTitle.querySelectorAll('.char')).forEach((char, index) => {
+                char.classList.add('visible');
+            });
+        }, 100);
+
+        refs.signatureTitle.addEventListener('click', handleSignatureClick);
+    }
+
+    function handleSignatureClick() {
+        // Shatter Effect
+        Array.from(refs.signatureTitle.querySelectorAll('.char')).forEach(char => {
+            const dx = (Math.random() - 0.5) * 500 + 'px';
+            const dy = (Math.random() - 0.5) * 500 + 'px';
+            const dr = (Math.random() - 0.5) * 360 + 'deg';
+            char.style.setProperty('--x', dx);
+            char.style.setProperty('--y', dy);
+            char.style.setProperty('--r', dr);
+            char.classList.add('shattered');
+        });
+
+        // Hide signature and open hub
+        refs.signatureTitle.style.pointerEvents = 'none';
+        
+        setTimeout(() => {
+            openHub();
+        }, 300); // Wait for shatter animation to start
+    }
+
+    /**
+     * Stage 2: Navigation Hub
+     */
+    function renderHubLinks() {
+        NAV_SECTIONS.forEach(section => {
+            const link = document.createElement('a');
+            link.href = `#${section.id}`;
+            link.className = 'hub-link block no-underline transition transform hover:scale-105';
+            link.innerHTML = `${section.icon} ${section.title}`;
+            link.onclick = (e) => {
+                e.preventDefault();
+                closeHub(section.id);
+            };
+            refs.hubLinksContainer.appendChild(link);
+        });
+    }
+
+    function openHub() {
+        // Hide entrance
+        refs.entranceContainer.style.opacity = 0;
+        
+        // Show hub and trigger opening animation
+        refs.navHub.classList.add('visible');
+        refs.navHub.classList.remove('closing');
+        
+        // Ensure main content is hidden while hub is active
+        refs.mainContentWrapper.classList.remove('visible');
+        
+        setTimeout(() => {
+            refs.entranceContainer.style.display = 'none';
+        }, 800);
+    }
+
+    function closeHub(targetId) {
+        refs.navHub.classList.remove('visible');
+        refs.navHub.classList.add('closing');
+        
+        // Transition to main content after the hub animation finishes
+        setTimeout(() => {
+            refs.navHub.style.opacity = 0;
+            refs.navHub.style.pointerEvents = 'none';
+            refs.mainContentWrapper.classList.add('visible');
+            refs.body.classList.remove('scroll-locked'); // Unlock scrolling
+
+            // Scroll to target section
+            if (targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }, 400); // Matches frame-close animation time
+    }
+
+    /**
+     * Stage 3: Portfolio Grid & Modal
+     */
+    function renderApps() {
+      refs.appsGrid.innerHTML = APPS.map(app => `
+        <div 
+          class="app-card bg-gradient-to-br ${app.gradient} ${app.bg} p-6 border-2 ${app.border} shadow-lg" 
+          data-app-id="${app.id}"
+          onclick="openAppPreview('${app.id}')"
+        >
+          <div class="z-10 relative">
+            <div class="${app.titleClass} text-3xl font-bold mb-1 leading-tight">
+              ${app.htmlTitle || app.title}
+            </div>
+            <p class="${app.subClass} text-base font-medium uppercase tracking-wider">${app.subtitle}</p>
+          </div>
+          <ul class="list-none mt-4 text-sm space-y-1 text-gray-300 z-10 relative">
+            ${app.features.map(f => `<li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M10 16h.01"></path></svg><span>${f}</span></li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+    }
+
+    window.openAppPreview = function(appId) {
+      const app = APPS.find(a => a.id === appId);
+      if (!app) return;
+
+      const previewHeader = document.getElementById('previewHeader');
+      const previewDetails = document.getElementById('previewDetails');
+      const previewDemo = document.getElementById('previewDemo');
+      const previewFooter = document.getElementById('previewFooter');
+
+      // 1. Header
+      previewHeader.innerHTML = `
+        <h3 class="text-4xl font-orbitron font-bold ${app.titleClass || 'text-white'}">${app.title}</h3>
+        <p class="text-xl ${app.subClass || 'text-gray-300'}">${app.subtitle}</p>
+      `;
+
+      // 2. Details
+      previewDetails.innerHTML = `
+        <h4 class="text-2xl font-orbitron text-cyan-400 mb-2">Concept Summary</h4>
+        <p class="text-base text-gray-300">${app.longDescription}</p>
+        <h4 class="text-2xl font-orbitron text-cyan-400 mt-4 mb-2">Key Features</h4>
+        <ul class="list-disc list-inside text-base text-gray-300 space-y-1">
+          ${app.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+      `;
+
+      // 3. Demo
+      previewDemo.innerHTML = `
+        <h4 class="text-2xl font-orbitron text-cyan-400 mb-2 text-center">Live Demo Mockup</h4>
+        <div class="p-4 bg-gray-900 rounded-xl">
+            ${app.demoContent}
+        </div>
+      `;
+      
+      // 4. Footer CTA
+      previewFooter.innerHTML = `
+        <a href="${app.cta.href}" class="inline-block bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-8 rounded-full shadow-lg transition text-lg mt-4">
+          ${app.cta.text}
+        </a>
+      `;
+
+      // Show modal
+      refs.body.classList.add('scroll-locked');
+      refs.appPreviewModal.style.display = 'grid';
+    }
+
+    window.closeAppPreview = function() {
+      refs.appPreviewModal.style.display = 'none';
+      refs.body.classList.remove('scroll-locked');
+    }
+  </script>
+  
+  <!-- Debug helper: auto-log startup, show JS errors, and auto-close entrance overlay -->
+  <script>
+    (function(){
+      console.log('[legacy-debug] script loaded');
+
+      // Surface runtime errors to both console and an on-screen banner
+      function showError(msg){
+        try{
+          console.error('[legacy-debug]', msg);
+          var b = document.getElementById('legacy-debug-banner');
+          if(!b){
+            b = document.createElement('div');
+            b.id = 'legacy-debug-banner';
+            b.style.position = 'fixed';
+            b.style.left = '12px';
+            b.style.right = '12px';
+            b.style.bottom = '12px';
+            b.style.zIndex = 100000;
+            b.style.background = 'rgba(255,20,20,0.9)';
+            b.style.color = 'white';
+            b.style.padding = '10px 14px';
+            b.style.borderRadius = '8px';
+            b.style.fontFamily = 'monospace';
+            b.style.fontSize = '12px';
+            document.body.appendChild(b);
+          }
+          b.textContent = 'Legacy JS error: '+String(msg).slice(0,300);
+        }catch(e){/* ignore */}
+      }
+
+      window.addEventListener('error', function(e){
+        showError(e.message || e);
+      });
+      window.addEventListener('unhandledrejection', function(e){
+        showError(e.reason || e);
+      });
+
+      // Auto-close entrance overlay (if present) after 1.2s to expose page for debugging
+      setTimeout(function(){
+        try{
+          var ent = document.getElementById('entrance-container');
+          if(ent && ent.style.display !== 'none'){
+            ent.style.transition = 'opacity 0.3s ease';
+            ent.style.opacity = '0';
+            setTimeout(function(){ ent.style.display = 'none'; document.body.classList.remove('scroll-locked'); }, 350);
+            console.log('[legacy-debug] entrance overlay auto-closed');
+          }
+        }catch(e){ console.warn('[legacy-debug] cannot auto-close entrance', e); }
+      }, 1200);
+
+      // Quick network connectivity hint for CDN-dependent assets
+      setTimeout(function(){
+        if(typeof fetch === 'function'){
+          fetch('https://fonts.googleapis.com').then(function(){
+            console.log('[legacy-debug] fonts.googleapis.com reachable');
+          }).catch(function(){
+            showError('fonts.googleapis.com unreachable (CDN blocked)');
+          });
+        }
+      }, 1500);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+// Backup of current `layout.tsx` before restoring legacy version
+import "./globals.css";
+import "./portfolio.css";
+import type { Metadata } from "next";
+import { Orbitron, Lexend_Deca, Playfair_Display } from "next/font/google";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["700", "900"],
+  variable: "--font-orbitron",
+});
+
+const lexend = Lexend_Deca({
+  subsets: ["latin"],
+  weight: ["300", "400", "600"],
+  variable: "--font-lexend",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-playfair",
+});
+
+export const metadata: Metadata = {
+  title: "AndySD Labs",
+  description: "Cinematic portfolio — apps, demos, and build status.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html
+      lang="en"
+      className={`${orbitron.variable} ${lexend.variable} ${playfair.variable}`}
+    >
+      <body className="bg-[#050507] text-white antialiased">{children}</body>
+    </html>
+  );
+}
+

@@ -1,0 +1,34 @@
+﻿
+/* ANDYSD_GODTIER_PATCH_V1 */
+
+/* Make sure the base background is always correct in Next */
+html, body { background-color: #050507; }
+
+/* Better text rendering on Windows + macOS */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accessibility: visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid rgba(0, 255, 249, 0.85);
+  outline-offset: 3px;
+}
+
+/* Accessibility: reduce motion for users who request it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  body::before { animation: none !important; }
+}
+
+/* Graceful fallback if blur isn't supported */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass { background: rgba(25,25,36,0.72); }
+}

@@ -1,0 +1,76 @@
+﻿import type { ReactNode } from "react";
+
+export type PortfolioApp = {
+  id: string;
+  title: string;
+  subtitle: string;
+  gradient: string;
+  fxClass: string;
+  borderClass: string;
+  titleClass: string;
+  subClass: string;
+  features: string[];
+  description: ReactNode;
+  demo: ReactNode;
+  cta: { text: string; href: string; disabled?: boolean };
+  status?: string;
+};
+
+export const PORTFOLIO_APPS: PortfolioApp[] = [
+  // AndySD Suite (Labs hub + 6 core apps + 2 learning games)
+  { id: "labs", title: "AndySD Labs", subtitle: "Portfolio hub", gradient: "from-black to-slate-900", fxClass: "mirror-bg",
+    borderClass: "border-cyan-500/20", titleClass: "font-orbitron text-cyan-200", subClass: "text-gray-200",
+    features: ["Cinematic home", "Demo launcher", "Build tracker"],
+    description: <>Central hub for all AndySD products and demos.</>,
+    demo: (<div className="text-xs text-gray-300">Suite: 6 apps + 2 games</div>),
+    cta: { text: "Explore", href: "#portfolio" } },
+
+  { id: "flippin", title: "Flippin’", subtitle: "AI resale command center + FlippiN’ Out", gradient: "from-emerald-900 to-lime-700",
+    fxClass: "flippin-bg", borderClass: "border-lime-500/30", titleClass: "font-orbitron text-lime-100", subClass: "text-emerald-100",
+    features: ["AI item detection", "Smart pricing", "Gamified flipping"],
+    description: <>Flippin’ handles your real resale workflow; FlippiN’ Out adds missions and streaks.</>,
+    demo: (<div className="text-center text-lime-200">ROI Demo: 240%</div>),
+    cta: { text: "View", href: "#", disabled: true } },
+
+  { id: "giggin", title: "GiGGiN’", subtitle: "Gig planner + Gig-EZ", gradient: "from-slate-900 to-cyan-800",
+    fxClass: "gigit-bg", borderClass: "border-cyan-500/30", titleClass: "font-orbitron text-cyan-200", subClass: "text-cyan-100",
+    features: ["Pay tracking", "Route optimization", "Quick entry (Gig-EZ)"],
+    description: <>GiGGiN’ is your side-hustle HQ; Gig-EZ is the fast-entry layer.</>,
+    demo: (<div className="text-xs text-gray-300">Today Earnings $189 (3 tasks)</div>),
+    cta: { text: "View", href: "#", disabled: true } },
+
+  { id: "cruizr", title: "Cruizr", subtitle: "GPS social realms • CruizN / Valid8", gradient: "from-slate-950 to-fuchsia-800",
+    fxClass: "mirror-bg", borderClass: "border-fuchsia-500/30", titleClass: "font-orbitron text-fuchsia-200", subClass: "text-fuchsia-100",
+    features: ["Realms", "Map privacy", "Verification"],
+    description: <>Cruizr = Realms; CruizN = explore; Valid8 = safety & trust.</>,
+    demo: (<div className="text-xs text-fuchsia-200 text-center">Realms: Social • Dating • Anon</div>),
+    cta: { text: "View", href: "#", disabled: true } },
+
+  { id: "ariadne", title: "Ariadne", subtitle: "Relationship intelligence • ENSIGHT / Mirror", gradient: "from-slate-800 to-indigo-800",
+    fxClass: "ensight-bg", borderClass: "border-indigo-500/30", titleClass: "font-orbitron text-indigo-300", subClass: "text-gray-100",
+    features: ["Trigger mapping", "Repair tools", "Pattern insights"],
+    description: <>Ariadne + ENSIGHT reveal and repair real relational patterns.</>,
+    demo: (<div className="text-xs text-indigo-200">Insight: Repair = Reflect + Ask Need</div>),
+    cta: { text: "View", href: "#", disabled: true } },
+
+  { id: "artperiod", title: "ArtPeriod™", subtitle: "AI art scanner • ART(period)", gradient: "from-slate-900 to-rose-800",
+    fxClass: "artperiod-bg", borderClass: "border-rose-400/30", titleClass: "font-serif text-rose-200", subClass: "text-rose-100",
+    features: ["Provenance chain", "Forgery detection", "NFT linking"],
+    description: <>Scan artwork, confirm authenticity, trace history.</>,
+    demo: (<div className="text-xs text-rose-200">Integrity Score: 92%</div>),
+    cta: { text: "View", href: "#", disabled: true } },
+
+  { id: "cryptoacademy", title: "Crypto Academy", subtitle: "Neon-grid learning game", gradient: "from-slate-950 to-cyan-900",
+    fxClass: "cryptoacademy-bg", borderClass: "border-cyan-400/30", titleClass: "font-orbitron text-cyan-200", subClass: "text-cyan-100",
+    features: ["Blockchain basics", "Quest system", "Safe sandbox"],
+    description: <>Interactive quests for mastering blockchain fundamentals.</>,
+    demo: (<div className="text-xs text-cyan-300">Quest 1: What is a Block? ✅</div>),
+    cta: { text: "Start Quest", href: "#", disabled: true } },
+
+  { id: "cyberacademy", title: "Cyber Academy", subtitle: "Scanline defense training", gradient: "from-slate-900 to-rose-900",
+    fxClass: "cyberacademy-bg", borderClass: "border-rose-400/30", titleClass: "font-orbitron text-rose-200", subClass: "text-rose-100",
+    features: ["Blue/Purple team labs", "Ethical defense", "Progress tracking"],
+    description: <>Gamified cybersecurity training with ethical focus.</>,
+    demo: (<div className="text-xs text-rose-300 text-center">Firewall Integrity 85%</div>),
+    cta: { text: "Enter Lab", href: "#", disabled: true } },
+];

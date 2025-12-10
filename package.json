@@ -1,0 +1,17 @@
+{
+  "name": "andysd-suite",
+  "private": true,
+  "packageManager": "pnpm@10.24.0",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "lint:db": "node scripts/lint-db-isolation.js",
+    "test:ariadne": "node scripts/test-ariadne.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.6.3",
+    "typescript": "^5.3.3"
+  }
+}

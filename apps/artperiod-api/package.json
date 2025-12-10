@@ -1,0 +1,8 @@
+{
+  "name": "artperiod-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo Starting artperiod-api... && exit 0"
+  }
+}

@@ -1,0 +1,18 @@
+/* FX backgrounds (ported from your HTML) */
+.flippin-bg::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at center, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 12px 12px; animation: pulseburst 2s infinite; }
+@keyframes pulseburst { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
+
+.cryptoacademy-bg::before { content:''; position:absolute; inset:0; background-image: linear-gradient(#0ff 1px, transparent 1px), linear-gradient(90deg,#0ff 1px, transparent 1px); background-size:40px 40px; opacity:.15; box-shadow: inset 0 0 30px rgba(0,255,255,.4); }
+
+.cyberacademy-bg::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(0deg, rgba(255,0,0,0.15) 0px, rgba(255,0,0,0.15) 2px, transparent 2px, transparent 4px); animation: redpulse 3s infinite; }
+@keyframes redpulse { 0%,100%{opacity:.15;} 50%{opacity:.3;} }
+
+.gigit-bg::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 10px, transparent 10px 20px); }
+
+.ensight-bg::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle 2px at var(--x,50%) var(--y,50%), rgba(255,105,180,.9), transparent); animation: wiggle 6s infinite alternate; opacity: .25; }
+@keyframes wiggle { from{transform:translateX(-10px);} to{transform:translateX(10px);} }
+
+.mirror-bg::before { content:''; position:absolute; inset:0; background: linear-gradient(120deg, rgba(255,255,255,.18) 0%, transparent 60%); background-size:200% 200%; animation: sheen 4s infinite; }
+@keyframes sheen { from{background-position:-200% 0;} to{background-position:200% 0;} }
+
+.artperiod-bg::before { content:''; position:absolute; inset:0; background: radial-gradient(circle 120px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.15), transparent 80%); pointer-events:none; }

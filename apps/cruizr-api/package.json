@@ -1,0 +1,8 @@
+{
+  "name": "cruizr-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo Starting cruizr-api... && exit 0"
+  }
+}

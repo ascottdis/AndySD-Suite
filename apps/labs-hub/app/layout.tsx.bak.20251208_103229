@@ -1,0 +1,37 @@
+﻿import "./portfolio.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AndySD | Cinematic Portfolio",
+  description: "Cinematic, intelligent tools for clarity, wellness, creativity, and mastery.",
+  applicationName: "AndySD",
+  themeColor: "#050507",
+  openGraph: {
+    title: "AndySD | Cinematic Portfolio",
+    description: "Cinematic, intelligent tools for clarity, wellness, creativity, and mastery.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AndySD | Cinematic Portfolio",
+    description: "Cinematic, intelligent tools for clarity, wellness, creativity, and mastery.",
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        {/* Google Fonts (matches your original HTML) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&family=Bangers&family=Lexend+Deca:wght@300;400&family=Playfair+Display:wght@700&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="color-scheme" content="dark" />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}

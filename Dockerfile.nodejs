@@ -1,0 +1,30 @@
+# Dockerfile for Node.js apps (giggin-api, ariadne-api)
+# Build: docker build -t andysd/giggin-api:latest -f apps/giggin/api/Dockerfile .
+# Run: docker run -e GIGGIN_DATABASE_URL=... -p 3001:3001 andysd/giggin-api:latest
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install pnpm
+RUN npm install -g pnpm@10.24.0
+
+# Copy workspace files
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+
+# Copy all packages and apps
+COPY packages ./packages
+COPY apps ./apps
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Build packages if needed
+RUN pnpm --filter @andysd/db build || true
+RUN pnpm --filter @andysd/auth build || true
+
+# Expose port (app-specific, can be overridden)
+EXPOSE 3001
+
+# Default to giggin-api; override CMD for other apps
+CMD ["pnpm", "--filter", "@andysd/giggin-api", "start"]

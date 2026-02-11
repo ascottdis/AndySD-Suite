@@ -1,24 +1,26 @@
 {
-  "name": "@andysd/db",
-  "version": "0.0.1",
-  "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "exports": {
-    ".": "./src/index.ts",
-    "./schema": "./src/schema/index.ts"
-  },
-  "scripts": {
-    "db:push": "drizzle-kit push:pg",
-    "db:studio": "drizzle-kit studio"
-  },
-  "dependencies": {
-    "@neondatabase/serverless": "^0.9.0",
-    "drizzle-orm": "^0.29.3"
-  },
-  "devDependencies": {
-    "dotenv": "^16.3.1",
-    "drizzle-kit": "^0.31.8",
-    "typescript": "^5.3.3"
-  }
+    "name": "@andysd/db",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "private": true,
+    "scripts": {
+        "build": "tsup src/index.ts --format esm,cjs --dts --out-dir dist",
+        "dev": "echo [@andysd/db] dev watcher disabled for now && exit 0",
+        "lint": "eslint \"src/**/*.ts\"",
+        "typecheck": "tsc --noEmit",
+        "prisma:generate": "prisma generate",
+        "prisma:migrate": "prisma migrate dev"
+    },
+    "dependencies": {
+        "@andysd/ui": "workspace:^"
+    },
+    "devDependencies": {
+        "@prisma/client": "^6.19.2",
+        "eslint": "latest",
+        "prisma": "^6.19.2",
+        "tsup": "latest",
+        "tsx": "latest",
+        "typescript": "latest"
+    }
 }

@@ -1,80 +1,64 @@
-import type { FastifyRequest, FastifyReply } from 'fastify';
-import { verifyToken } from './jwt';
-import type { JWTPayload } from './types';
+﻿import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { verifyToken } from "./jwt";
 
-declare module 'fastify' {
+export type AuthMiddlewareConfig = {
+  getToken?: (req: FastifyRequest) => string | null;
+};
+
+function defaultGetBearerToken(req: FastifyRequest): string | null {
+  const h = req.headers.authorization;
+  if (!h) return null;
+  const [type, token] = h.split(" ");
+  if (type?.toLowerCase() !== "bearer" || !token) return null;
+  return token;
+}
+
+declare module "fastify" {
   interface FastifyRequest {
-    user?: JWTPayload;
+    user?: { id: string; email?: string };
+  }
+  interface FastifyInstance {
+    authenticate: (req: FastifyRequest, reply: FastifyReply) => Promise<void>;
+    optionalAuth: (req: FastifyRequest, reply: FastifyReply) => Promise<void>;
   }
 }
 
-export interface AuthMiddlewareConfig {
-  jwtSecret: string;
-}
+export function createAuthMiddleware(config?: AuthMiddlewareConfig) {
+  const getToken = config?.getToken ?? defaultGetBearerToken;
 
-/**
- * Create auth middleware for Fastify
- */
-export function createAuthMiddleware(config: AuthMiddlewareConfig) {
-  return async function authMiddleware(
-    request: FastifyRequest,
-    reply: FastifyReply
-  ) {
-    const authHeader = request.headers.authorization;
+  return async (req: FastifyRequest, reply: FastifyReply) => {
+    const token = getToken(req);
+    if (!token) return reply.code(401).send({ error: "Missing bearer token" });
 
-    if (!authHeader) {
-      return reply.status(401).send({
-        error: 'Unauthorized',
-        message: 'Missing authorization header',
-      });
+    try {
+      const decoded = verifyToken<{ id?: string; userId?: string; email?: string }>(token);
+      const id = decoded.id ?? decoded.userId;
+      if (!id) return reply.code(401).send({ error: "Invalid token payload" });
+      req.user = { id, email: decoded.email };
+    } catch {
+      return reply.code(401).send({ error: "Invalid token" });
     }
-
-    const [bearer, token] = authHeader.split(' ');
-
-    if (bearer !== 'Bearer' || !token) {
-      return reply.status(401).send({
-        error: 'Unauthorized',
-        message: 'Invalid authorization format. Use: Bearer <token>',
-      });
-    }
-
-    const payload = verifyToken(token, config.jwtSecret);
-
-    if (!payload) {
-      return reply.status(401).send({
-        error: 'Unauthorized',
-        message: 'Invalid or expired token',
-      });
-    }
-
-    request.user = payload;
   };
 }
 
-/**
- * Optional auth - attaches user if token present
- */
-export function createOptionalAuthMiddleware(config: AuthMiddlewareConfig) {
-  return async function optionalAuthMiddleware(
-    request: FastifyRequest,
-    _reply: FastifyReply
-  ) {
-    const authHeader = request.headers.authorization;
+export function createOptionalAuthMiddleware(config?: AuthMiddlewareConfig) {
+  const getToken = config?.getToken ?? defaultGetBearerToken;
 
-    if (!authHeader) {
-      return;
-    }
+  return async (req: FastifyRequest, _reply: FastifyReply) => {
+    const token = getToken(req);
+    if (!token) return;
 
-    const [bearer, token] = authHeader.split(' ');
-
-    if (bearer !== 'Bearer' || !token) {
-      return;
-    }
-
-    const payload = verifyToken(token, config.jwtSecret);
-
-    if (payload) {
-      request.user = payload;
+    try {
+      const decoded = verifyToken<{ id?: string; userId?: string; email?: string }>(token);
+      const id = decoded.id ?? decoded.userId;
+      if (id) req.user = { id, email: decoded.email };
+    } catch {
+      // ignore
     }
   };
+}
+
+export function registerAuthDecorators(fastify: FastifyInstance, config?: AuthMiddlewareConfig) {
+  fastify.decorate("authenticate", createAuthMiddleware(config));
+  fastify.decorate("optionalAuth", createOptionalAuthMiddleware(config));
 }

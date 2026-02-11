@@ -1,32 +1,40 @@
-import { FastifyInstance } from 'fastify';
+import type { FastifyInstance } from "fastify";
+import { db } from "../db/client";
+import { items } from "../db/schema";
+import { requireAuth } from "../plugins/auth";
+import { eq, and } from "drizzle-orm";
 
-export default async (fastify: FastifyInstance) => {
-  // POST /api/items — Create item
-  fastify.post<{ Body: any }>('/', async (request, reply) => {
-    const body = request.body as any;
-    return { id: '1', ...body, status: 'draft' };
+export async function itemRoutes(app: FastifyInstance) {
+  app.get("/items", async (req, reply) => {
+    requireAuth(req);
+
+    const workspaceId = (req.headers["x-workspace-id"] as string) || "";
+    if (!workspaceId) return reply.code(400).send({ error: "x-workspace-id required" });
+
+    const rows = await db.select().from(items).where(eq(items.workspaceId, workspaceId));
+    return reply.send({ items: rows });
   });
 
-  // GET /api/items — List items
-  fastify.get('/', async (request, reply) => {
-    return { items: [], total: 0 };
-  });
+  app.post("/items", async (req, reply) => {
+    requireAuth(req);
 
-  // GET /api/items/:id — Get item
-  fastify.get<{ Params: { id: string } }>('/:id', async (request, reply) => {
-    const { id } = request.params;
-    return { id, title: 'Sample Item', status: 'draft' };
-  });
+    const workspaceId = (req.headers["x-workspace-id"] as string) || "";
+    if (!workspaceId) return reply.code(400).send({ error: "x-workspace-id required" });
 
-  // PATCH /api/items/:id — Update item
-  fastify.patch<{ Params: { id: string }; Body: any }>('/:id', async (request, reply) => {
-    const { id } = request.params;
-    return { id, updated: true };
-  });
+    const body = req.body as { title: string; condition?: string; costCents?: number };
+    const title = body.title || "";
+    if (!title) return reply.code(400).send({ error: "title required" });
 
-  // DELETE /api/items/:id — Delete item
-  fastify.delete<{ Params: { id: string } }>('/:id', async (request, reply) => {
-    const { id } = request.params;
-    return { id, deleted: true };
+    const inserted = await db
+      .insert(items)
+      .values({
+        workspaceId,
+        title,
+        condition: body.condition ?? "unknown",
+        costCents: body.costCents ?? 0,
+      })
+      .returning();
+
+    return reply.code(201).send({ item: inserted[0] });
   });
-};
+}

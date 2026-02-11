@@ -4,5 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "echo Starting artperiod-api... && exit 0"
+  },
+  "dependencies": {
+    "@andysd/ui": "workspace:^"
   }
 }

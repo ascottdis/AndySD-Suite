@@ -1,15 +1,13 @@
-import { drizzle } from 'drizzle-orm/neon-http';
-import { neon } from '@neondatabase/serverless';
+﻿import { PrismaClient } from "./generated/client";
 
-/**
- * Create and return a Drizzle DB instance for the provided database URL.
- * This avoids creating a connection at module import time so apps must
- * explicitly initialize their own DB instance using an app-specific env var.
- */
-export function createDb(databaseUrl: string) {
-	const sql = neon(databaseUrl);
-	return drizzle(sql);
+const globalForPrisma = global as unknown as { prisma?: PrismaClient };
+
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    log: ["error", "warn"]
+  });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma;
 }
-
-// Re-export schema so callers can still import table types: `import { users } from '@andysd/db/schema'`
-export * from './schema';

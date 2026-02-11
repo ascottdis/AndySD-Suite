@@ -1,17 +1,25 @@
 {
-  "name": "andysd-suite",
-  "private": true,
-  "packageManager": "pnpm@10.24.0",
-  "scripts": {
-    "dev": "turbo run dev --parallel",
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "lint:db": "node scripts/lint-db-isolation.js",
-    "test:ariadne": "node scripts/test-ariadne.js"
-  },
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "^2.6.3",
-    "typescript": "^5.3.3"
-  }
+    "name": "andysd-suite",
+    "private": true,
+    "version": "1.0.0",
+    "packageManager": "pnpm@9.0.0",
+    "scripts": {
+        "dev": "turbo run dev --parallel",
+        "build": "turbo run build",
+        "lint": "turbo run lint"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.1.18",
+        "@types/node": "^25.2.1",
+        "@types/react": "^19.2.13",
+        "postcss": "^8.5.6",
+        "prisma": "^7.3.0",
+        "turbo": "^2.0.0",
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "@prisma/adapter-pg": "^7.3.0",
+        "@prisma/client": "^7.3.0",
+        "pg": "^8.11.3"
+    }
 }

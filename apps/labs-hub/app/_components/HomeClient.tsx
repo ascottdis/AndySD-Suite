@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { AppCard } from "./AppCard";
-import { AppModal } from "./AppModal";
+import AppCard from "./AppCard";
+import AppModal from "./AppModal";
 import { NAV_SECTIONS, PORTFOLIO_APPS, type PortfolioApp } from "../data/apps";
 
 type Stage = "intro" | "hub" | "main";
@@ -13,7 +13,7 @@ export function HomeClient() {
   const [shatter, setShatter] = useState(false);
   const [active, setActive] = useState<PortfolioApp | null>(null);
 
-  const letters = useMemo(() => "ANDYSD".split("), []);
+  const letters = useMemo(() => "ANDYSD".split(""), []);
 
   useEffect(() => {
     const locked = stage !== "main" || !!active;
@@ -197,7 +197,7 @@ export function HomeClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {PORTFOLIO_APPS.map((app) => (
-                <AppCard key={app.id} app={app} onClick={() => setActive(app)} />
+                <AppCard key={app.id} app={app} onOpen={() => setActive(app)} />
               ))}
             </div>
           </div>
@@ -300,7 +300,7 @@ export function HomeClient() {
       </main>
 
       {/* MODAL */}
-      <AppModal app={active} onClose={() => setActive(null)} />
+      <AppModal app={active} open={!!active} onClose={() => setActive(null)} />
     </div>
   );
 }

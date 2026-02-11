@@ -1,31 +1,22 @@
-// Types
-export type {
-  JWTPayload,
-  AuthUser,
-  LoginCredentials,
-  RegisterCredentials,
-  AuthTokens,
-  AuthConfig,
-} from './types';
+﻿import type { User } from "@prisma/client";
+import { prisma } from "@andysd/db";
 
-// Password utilities
-export {
-  hashPassword,
-  verifyPassword,
-  validatePassword,
-} from './password';
+export async function getCurrentUser(): Promise<User | null> {
+  // TODO: replace with real session lookup
+  const user = await prisma.user.findFirst();
+  return user ?? null;
+}
 
-// JWT utilities
-export {
-  createTokens,
-  createAccessToken,
-  verifyToken,
-  decodeToken,
-} from './jwt';
+export async function signIn(email: string): Promise<User> {
+  let user = await prisma.user.findUnique({ where: { email } });
+  if (!user) {
+    user = await prisma.user.create({
+      data: { email }
+    });
+  }
+  return user;
+}
 
-// Middleware
-export {
-  createAuthMiddleware,
-  createOptionalAuthMiddleware,
-} from './middleware';
-export type { AuthMiddlewareConfig } from './middleware';
+export async function signOut(): Promise<void> {
+  // Placeholder for session revocation
+}

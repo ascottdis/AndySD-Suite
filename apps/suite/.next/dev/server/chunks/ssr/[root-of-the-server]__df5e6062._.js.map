@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Andy/andysd-suite/apps/suite/app/%28labs%29/labs/page.tsx"],"sourcesContent":["export default function LabsHomePage() {\n  return (\n    <main>\n      <h2>Toolbox</h2>\n      <ul>\n        <li><a href=\"/labs/flippin/mock-research\">Flippin: Mock Research Mode</a></li>\n      </ul>\n    </main>\n  );\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,6WAAC;;0BACC,6WAAC;0BAAG;;;;;;0BACJ,6WAAC;0BACC,cAAA,6WAAC;8BAAG,cAAA,6WAAC;wBAAE,MAAK;kCAA8B;;;;;;;;;;;;;;;;;;;;;;AAIlD"}}]
+}

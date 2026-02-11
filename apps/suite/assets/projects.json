@@ -1,0 +1,87 @@
+﻿{
+  "brand": {
+    "name": "AndySD Studio Suite",
+    "owner": "Andy Smith-Denson",
+    "location": "Atlanta, GA",
+    "tagline": "Seven-pillar ecosystem • systems + UX • 2026"
+  },
+  "pillars": [
+    {
+      "id": "flippin",
+      "title": "Flippin / FlipOS",
+      "subtitle": "Resale / Arbitrage OS",
+      "route": "/work/flippin/",
+      "accent": "#00E7FF",
+      "aliases": ["FlipOS", "Flippin’", "Flippin"],
+      "status": "Active build",
+      "elevator": "Inventory-first resale operating system: source → research → list → lifecycle.",
+      "features": ["Inventory core", "AutoList", "LiveSell", "ROI & comps workflow", "Ops-grade speed UI"]
+    },
+    {
+      "id": "gigos",
+      "title": "Giggin / GigOS",
+      "subtitle": "Gig Command Center",
+      "route": "/work/gigos/",
+      "accent": "#34FF8A",
+      "aliases": ["GigOS", "Giggin", "GigDash", "OmniShop (mode)"],
+      "status": "Active build",
+      "elevator": "Command center for gig work: ledger truth + decisions optimized around $/hr.",
+      "features": ["Gig Ledger schema", "$/hr intelligence", "Command Center views", "Map & routing hooks", "Operator workflows"]
+    },
+    {
+      "id": "aperture",
+      "title": "Aperture",
+      "subtitle": "Realms • Presence • Versions",
+      "route": "/work/aperture/",
+      "accent": "#FF2EEA",
+      "aliases": ["Aperture", "Cruizr (version)", "SceneHim (version)"],
+      "status": "Active build",
+      "elevator": "One unified pillar where Cruizr + SceneHim live as versions inside Aperture primitives.",
+      "features": ["Realms model", "Presence/session layer", "Cruizr version track", "SceneHim version track", "Unified identity UX"]
+    },
+    {
+      "id": "artperiod",
+      "title": "ArtPeriod",
+      "subtitle": "Art / Context Intelligence",
+      "route": "/work/artperiod/",
+      "accent": "#FFB020",
+      "aliases": ["ArtPeriod"],
+      "status": "Separate pillar",
+      "elevator": "Standalone art/context platform—kept separate by design.",
+      "features": ["Catalog + collections", "Context engine", "Analysis UX", "Shareable narratives", "Creator workflow tooling"]
+    },
+    {
+      "id": "transithub",
+      "title": "Transit‑Hub",
+      "subtitle": "Transit Planner",
+      "route": "/work/transithub/",
+      "accent": "#8A5CFF",
+      "aliases": ["Transit‑Hub", "TransitHub"],
+      "status": "Active build",
+      "elevator": "Transit intelligence: planning, timing, and clean decision UX for movement.",
+      "features": ["Route planning", "ETA confidence UX", "Multi-modal intent", "Gig-aware movement", "Fast “what should I do now” UI"]
+    },
+    {
+      "id": "ariadne",
+      "title": "Ariadne",
+      "subtitle": "Routing / API Brain",
+      "route": "/work/ariadne/",
+      "accent": "#00E7FF",
+      "aliases": ["Ariadne"],
+      "status": "Active build",
+      "elevator": "Reusable routing intelligence powering multiple pillars through structured APIs.",
+      "features": ["Constraints model", "Planner outputs", "API surface for other apps", "Optimization hooks", "Cross‑pillar reuse"]
+    },
+    {
+      "id": "studio",
+      "title": "AndySD Studio Suite",
+      "subtitle": "The Hub",
+      "route": "/work/studio/",
+      "accent": "#FFFFFF",
+      "aliases": ["Studio Suite", "Suite"],
+      "status": "Live portfolio hub",
+      "elevator": "The mission-control portfolio: pillars, versions, proof, and conversion to jobs/clients.",
+      "features": ["Unified navigation", "Consistent design system", "Version registry (no duplicates)", "Proof-first pages", "Hire/partner conversion"]
+    }
+  ]
+}

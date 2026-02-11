@@ -1,0 +1,3 @@
+module.exports=[93695,(a,b,c)=>{b.exports=a.x("next/dist/shared/lib/no-fallback-error.external.js",()=>require("next/dist/shared/lib/no-fallback-error.external.js"))},166,a=>{a.n(a.i(43e3))},43874,a=>{a.n(a.i(39408))},32322,a=>{a.n(a.i(5513))},83845,a=>{a.n(a.i(5992))},8195,a=>{a.n(a.i(81945))},48932,a=>{a.n(a.i(10363))},69748,a=>{"use strict";var b=a.i(25619);function c(){return(0,b.jsxs)("main",{children:[(0,b.jsx)("h2",{children:"Toolbox"}),(0,b.jsx)("ul",{children:(0,b.jsx)("li",{children:(0,b.jsx)("a",{href:"/labs/flippin/mock-research",children:"Flippin: Mock Research Mode"})})})]})}a.s(["default",()=>c])}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__55dfc2d4._.js.map

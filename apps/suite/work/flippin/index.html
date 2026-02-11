@@ -1,0 +1,303 @@
+﻿<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>outFLIP • AndySD Studio Suite</title>
+
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = { darkMode: "class", theme: { extend: {
+      fontFamily: { display: ["Orbitron","sans-serif"], body: ["Inter","sans-serif"], mono: ["JetBrains Mono","monospace"] },
+      colors: { neonCyan: "#00E7FF" }
+    }}};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/suite.css" />
+
+  <style type="text/tailwindcss">
+    @variant dark (&:where(.dark, .dark *));
+    .bg-flippin {
+      background:
+        radial-gradient(1200px 800px at 30% -10%, rgba(0,231,255,0.18), transparent 65%),
+        radial-gradient(900px 700px at 80% 40%, rgba(0,231,255,0.08), transparent 60%),
+        linear-gradient(180deg, #030407, #051015 50%, #030407 100%);
+    }
+    .cyan-glow {
+      box-shadow: 0 0 60px rgba(0,231,255,0.3), inset 0 0 30px rgba(0,231,255,0.08);
+      border: 1px solid rgba(0,231,255,0.25);
+    }
+    .flip-title {
+      perspective: 1000px;
+      display: inline-block;
+    }
+    .flip-word {
+      display: inline-block;
+      animation: flipRotate 3.5s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+    @keyframes flipRotate {
+      0%, 45% { transform: rotateY(0deg); }
+      50%, 95% { transform: rotateY(180deg); }
+      100% { transform: rotateY(360deg); }
+    }
+    .flip-word[data-state="flipped"] {
+      transform: rotateY(180deg);
+    }
+    .inventory-card {
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .inventory-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0,231,255,0.4), inset 0 0 20px rgba(0,231,255,0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-flippin text-white font-body antialiased">
+  <div class="blueprint-grid fixed inset-0 opacity-20 pointer-events-none"></div>
+
+  <header class="sticky top-0 z-50 px-6 py-6 backdrop-blur-xl border-b border-neonCyan/10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-6">
+      <a href="/" class="flex items-center gap-4">
+        <div class="w-12 h-12 glass-elite rounded-2xl flex items-center justify-center font-display font-black border-neonCyan/20 text-neonCyan">F</div>
+        <div>
+          <div class="font-display font-black tracking-tight text-neonCyan">outFLIP / FLIPout</div>
+          <div class="text-[10px] font-mono text-white/40 uppercase tracking-[0.25em]">Resale OS</div>
+        </div>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="/" class="glass-elite rounded-xl px-4 py-2.5 text-sm font-mono text-white/80 hover:text-white transition">← Suite</a>
+        <a href="/work/gigos/" class="glass-elite rounded-xl px-4 py-2.5 text-sm font-mono text-white/80 hover:text-white transition">GigOS →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 pt-16 pb-28">
+    
+    <!-- Hero with Flip Animation -->
+    <section class="max-w-5xl">
+      <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-xl bg-neonCyan/10 border border-neonCyan/30 mb-10">
+        <div class="w-2.5 h-2.5 rounded-full bg-neonCyan animate-pulse"></div>
+        <span class="text-xs font-mono text-neonCyan tracking-wider uppercase">Pillar 01 • Inventory Operating System</span>
+      </div>
+
+      <h1 class="text-6xl md:text-[8rem] font-display font-black leading-[0.85] tracking-tighter mb-10">
+        <span class="flip-title">
+          <span id="flipWord" class="flip-word text-neonCyan" style="text-shadow: 0 0 40px rgba(0,231,255,0.5);">outFLIP</span>
+        </span>
+      </h1>
+
+      <p class="text-2xl md:text-3xl text-white/75 leading-relaxed font-light mb-10">
+        The resale operating system that turns <span class="text-neonCyan font-semibold">source → research → list → sell</span> into one frictionless flow.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4 mb-12">
+        <div class="glass-elite cyan-glow rounded-2xl p-6">
+          <div class="text-xs font-mono text-neonCyan/70 mb-2 uppercase">Mode</div>
+          <div class="text-2xl font-bold text-neonCyan">Inventory‑first</div>
+        </div>
+        <div class="glass-elite cyan-glow rounded-2xl p-6">
+          <div class="text-xs font-mono text-neonCyan/70 mb-2 uppercase">Core engine</div>
+          <div class="text-2xl font-bold text-neonCyan">AutoList</div>
+        </div>
+        <div class="glass-elite cyan-glow rounded-2xl p-6">
+          <div class="text-xs font-mono text-neonCyan/70 mb-2 uppercase">Status</div>
+          <div class="text-2xl font-bold text-neonCyan">Active build</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="mb-16">
+      <div class="glass-elite rounded-3xl p-10 border-neonCyan/20">
+        <h2 class="text-3xl font-display font-black tracking-tight text-neonCyan mb-6">The Problem</h2>
+        <p class="text-xl text-white/70 leading-relaxed mb-6">
+          Resale workflows are fragmented chaos: items tracked in spreadsheets, comps researched in 12 browser tabs, 
+          listing drafts scattered across marketplaces, and zero clean loop from "I sourced this" → "It sold."
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+            <div class="text-sm font-mono text-neonCyan mb-2">Pain 01</div>
+            <div class="text-white/80">No single source of truth for inventory</div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+            <div class="text-sm font-mono text-neonCyan mb-2">Pain 02</div>
+            <div class="text-white/80">Listing = slow manual copy-paste hell</div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+            <div class="text-sm font-mono text-neonCyan mb-2">Pain 03</div>
+            <div class="text-white/80">No ROI clarity until item ships</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="mb-16">
+      <div class="glass-elite rounded-3xl p-10 border-neonCyan/20">
+        <h2 class="text-3xl font-display font-black tracking-tight text-neonCyan mb-6">The Solution</h2>
+        <p class="text-xl text-white/70 leading-relaxed mb-8">
+          outFLIP makes inventory the <span class="text-neonCyan font-semibold">single source of truth</span>. 
+          Every item becomes a living record: sourced date, cost, comps, AI-generated listings, multi-channel sync, and sell-through tracking.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="inventory-card glass-elite rounded-2xl p-6 border-neonCyan/20">
+            <div class="text-sm font-mono text-neonCyan mb-3">Feature 01</div>
+            <div class="text-xl font-bold mb-3">Inventory Core</div>
+            <p class="text-white/65 text-sm leading-relaxed">
+              One database for all items: photos, cost basis, condition notes, marketplace status, location tracking.
+            </p>
+          </div>
+
+          <div class="inventory-card glass-elite rounded-2xl p-6 border-neonCyan/20">
+            <div class="text-sm font-mono text-neonCyan mb-3">Feature 02</div>
+            <div class="text-xl font-bold mb-3">AutoList</div>
+            <p class="text-white/65 text-sm leading-relaxed">
+              Gemini AI drafts titles, descriptions, tags from photos + item data. One-click to eBay/Mercari/Poshmark templates.
+            </p>
+          </div>
+
+          <div class="inventory-card glass-elite rounded-2xl p-6 border-neonCyan/20">
+            <div class="text-sm font-mono text-neonCyan mb-3">Feature 03</div>
+            <div class="text-xl font-bold mb-3">LiveSell</div>
+            <p class="text-white/65 text-sm leading-relaxed">
+              Real-time status per marketplace: listed, viewed, offered, sold. Full sell-through visibility.
+            </p>
+          </div>
+
+          <div class="inventory-card glass-elite rounded-2xl p-6 border-neonCyan/20">
+            <div class="text-sm font-mono text-neonCyan mb-3">Feature 04</div>
+            <div class="text-xl font-bold mb-3">Comps + ROI</div>
+            <p class="text-white/65 text-sm leading-relaxed">
+              Automated comp research, margin calculator, velocity insights. Know profitability before you list.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inventory Grid Demo (Mock Proof) -->
+    <section class="mb-16">
+      <div class="glass-elite rounded-3xl p-10 border-neonCyan/20">
+        <h2 class="text-3xl font-display font-black tracking-tight text-neonCyan mb-6">Live Inventory Terminal</h2>
+        <p class="text-white/60 mb-8">Mock preview of the operator-grade inventory UI (live demo coming soon)</p>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="inventory-card glass-elite rounded-xl p-5 border-neonCyan/20">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-xs font-mono text-neonCyan">ITEM-0042</div>
+              <div class="px-2 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-[10px] font-mono text-emerald-400">LISTED</div>
+            </div>
+            <div class="font-bold mb-2">Vintage Nike Windbreaker</div>
+            <div class="text-sm text-white/60 mb-4">Size L • Mint cond. • 3 channels</div>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <div><span class="text-white/50">Cost:</span> <span class="text-neonCyan font-mono">$18</span></div>
+              <div><span class="text-white/50">Target:</span> <span class="text-neonCyan font-mono">$65</span></div>
+              <div><span class="text-white/50">ROI:</span> <span class="text-emerald-400 font-mono">261%</span></div>
+            </div>
+          </div>
+
+          <div class="inventory-card glass-elite rounded-xl p-5 border-neonCyan/20">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-xs font-mono text-neonCyan">ITEM-0043</div>
+              <div class="px-2 py-1 rounded-md bg-yellow-500/20 border border-yellow-500/40 text-[10px] font-mono text-yellow-400">DRAFT</div>
+            </div>
+            <div class="font-bold mb-2">Carhartt Work Jacket</div>
+            <div class="text-sm text-white/60 mb-4">Size XL • Good cond. • AutoList ready</div>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <div><span class="text-white/50">Cost:</span> <span class="text-neonCyan font-mono">$22</span></div>
+              <div><span class="text-white/50">Est:</span> <span class="text-neonCyan font-mono">$85</span></div>
+              <div><span class="text-white/50">ROI:</span> <span class="text-emerald-400 font-mono">286%</span></div>
+            </div>
+          </div>
+
+          <div class="inventory-card glass-elite rounded-xl p-5 border-neonCyan/20">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-xs font-mono text-neonCyan">ITEM-0044</div>
+              <div class="px-2 py-1 rounded-md bg-blue-500/20 border border-blue-500/40 text-[10px] font-mono text-blue-400">SOLD</div>
+            </div>
+            <div class="font-bold mb-2">Patagonia Fleece Pullover</div>
+            <div class="text-sm text-white/60 mb-4">Size M • Excellent • Posh 4d</div>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <div><span class="text-white/50">Cost:</span> <span class="text-neonCyan font-mono">$15</span></div>
+              <div><span class="text-white/50">Sold:</span> <span class="text-neonCyan font-mono">$58</span></div>
+              <div><span class="text-white/50">ROI:</span> <span class="text-emerald-400 font-mono">287%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="mb-16">
+      <div class="glass-elite rounded-3xl p-10 border-neonCyan/20">
+        <h2 class="text-3xl font-display font-black tracking-tight text-neonCyan mb-6">The Outcome</h2>
+        <p class="text-xl text-white/70 leading-relaxed mb-8">
+          A reseller OS that eliminates context-switching, gives you ROI clarity in real time, 
+          and turns listing from a 20-minute manual grind into a 2-minute AI-assisted flow.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-neonCyan/10 border border-neonCyan/30 rounded-xl p-6">
+            <div class="text-4xl font-black text-neonCyan mb-2">1 source</div>
+            <div class="text-sm text-white/70">All inventory lives in one database, not scattered files</div>
+          </div>
+          <div class="bg-neonCyan/10 border border-neonCyan/30 rounded-xl p-6">
+            <div class="text-4xl font-black text-neonCyan mb-2">10x faster</div>
+            <div class="text-sm text-white/70">AutoList cuts listing time from 20min → 2min per item</div>
+          </div>
+          <div class="bg-neonCyan/10 border border-neonCyan/30 rounded-xl p-6">
+            <div class="text-4xl font-black text-neonCyan mb-2">Real ROI</div>
+            <div class="text-sm text-white/70">Know profitability before you list, not after you ship</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section>
+      <div class="glass-elite rounded-3xl p-10 border-neonCyan/20 text-center">
+        <h2 class="text-3xl font-display font-black text-neonCyan mb-6">Want to see outFLIP live?</h2>
+        <p class="text-white/65 mb-8 max-w-2xl mx-auto">
+          This pillar is under active development. Reach out to discuss a custom resale automation build for your workflow.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="mailto:you@example.com" class="px-8 py-4 bg-neonCyan text-black font-black rounded-xl hover:opacity-90 transition">
+            Email about outFLIP
+          </a>
+          <a href="/" class="glass-elite px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition">
+            Back to Suite
+          </a>
+          <a href="/work/gigos/" class="glass-elite px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition">
+            Next: GigOS →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-16 border-t border-neonCyan/10">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="text-xs font-mono text-white/30 uppercase tracking-[0.4em]">© 2026 AndySD Studio • outFLIP pillar</div>
+    </div>
+  </footer>
+
+  <script>
+    // Flip title animation: toggle between "outFLIP" and "FLIPout"
+    const flipWord = document.getElementById("flipWord");
+    const words = ["outFLIP", "FLIPout"];
+    let index = 0;
+
+    setInterval(() => {
+      index = (index + 1) % words.length;
+      flipWord.textContent = words[index];
+    }, 3500);
+  </script>
+</body>
+</html>

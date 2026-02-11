@@ -1,0 +1,115 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/portal/[app]",
+      "regex": "^/portal/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPapp": "nxtPapp"
+      },
+      "namedRegex": "^/portal/(?<nxtPapp>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/work/[slug]",
+      "regex": "^/work/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/work/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/flippin",
+      "regex": "^/flippin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/flippin(?:/)?$"
+    },
+    {
+      "page": "/labs",
+      "regex": "^/labs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/labs(?:/)?$"
+    },
+    {
+      "page": "/labs/flippin/mock-research",
+      "regex": "^/labs/flippin/mock\\-research(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/labs/flippin/mock\\-research(?:/)?$"
+    },
+    {
+      "page": "/labs/flippin/mock-research/export",
+      "regex": "^/labs/flippin/mock\\-research/export(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/labs/flippin/mock\\-research/export(?:/)?$"
+    },
+    {
+      "page": "/portal",
+      "regex": "^/portal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/portal(?:/)?$"
+    },
+    {
+      "page": "/work",
+      "regex": "^/work(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/work(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

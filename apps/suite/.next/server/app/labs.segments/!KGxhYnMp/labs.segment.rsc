@@ -1,0 +1,2 @@
+1:"$Sreact.fragment"
+0:{"buildId":"LFrRy9C-C-teXRNWcCjx1","rsc":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/54a52b3b63aabb5b.js","async":true}]],["$","div",null,{"className":"mx-auto mt-12 max-w-xl rounded-xl border border-zinc-800 bg-zinc-950/90 p-6 text-sm text-zinc-300","children":[["$","h1",null,{"className":"mb-2 text-xl font-semibold","children":"Labs disabled"}],["$","p",null,{"children":["Set ",["$","code",null,{"children":"LABS_ENABLED=true"}]," to access internal tools."]}]]}]]}],"loading":null,"isPartial":false}

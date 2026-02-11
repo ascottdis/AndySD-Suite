@@ -1,0 +1,48 @@
+
+> @andysd/suite@0.1.0 build C:\Users\Andy\andysd-suite\apps\suite
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Andy\pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Andy\andysd-suite\pnpm-lock.yaml
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local, .env
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.7s
+  Skipping validation of types
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/15) ...
+  Generating static pages using 11 workers (3/15) 
+  Generating static pages using 11 workers (7/15) 
+  Generating static pages using 11 workers (11/15) 
+✓ Generating static pages using 11 workers (15/15) in 1015.8ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /flippin
+├ ○ /labs
+├ ○ /labs/flippin/mock-research
+├ ƒ /labs/flippin/mock-research/export
+├ ○ /portal
+├ ƒ /portal/[app]
+├ ƒ /work
+└ ● /work/[slug]
+  ├ /work/flippin
+  ├ /work/gigos
+  ├ /work/artperiod
+  └ [+3 more paths]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

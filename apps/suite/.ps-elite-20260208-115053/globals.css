@@ -1,0 +1,281 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-bg: #020617;
+  --color-surface: #070b16;
+  --color-border: rgba(148, 163, 184, 0.22);
+
+  --color-text: #e5e7eb;
+  --color-text-soft: #9ca3af;
+
+  --color-accent: #22d3ee;
+  --color-accent-strong: #06b6d4;
+  --color-accent-soft: rgba(34, 211, 238, 0.14);
+}
+
+@layer base {
+  :root { color-scheme: dark; }
+
+  body {
+    @apply bg-bg text-text antialiased;
+  }
+
+  a {
+    @apply text-accent hover:text-accent-strong transition-colors;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.35);
+    color: #f9fafb;
+  }
+}
+
+/* cyberpunk-galactic:start */
+.starfield {
+  background-image:
+    radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px),
+    radial-gradient(rgba(0,255,255,0.20) 1px, transparent 1px),
+    radial-gradient(rgba(255,51,204,0.18) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px, 7px 7px;
+  background-position: 0 0, 20px 60px, 120px 10px;
+  animation: star-drift 22s linear infinite;
+}
+
+@keyframes star-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-140px, 220px, 0); }
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.08) 0px,
+    rgba(255,255,255,0.08) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+/* cyberpunk-galactic:end */
+
+/* matrix-bold:start */
+.matrix-grid{
+  background:
+    linear-gradient(rgba(0,255,140,0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,140,0.10) 1px, transparent 1px);
+  background-size: 44px 44px;
+  filter: drop-shadow(0 0 18px rgba(0,255,140,0.08));
+  animation: grid-drift 18s linear infinite;
+}
+
+@keyframes grid-drift{
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-88px,44px,0); }
+}
+
+.matrix-haze{
+  background:
+    radial-gradient(circle at 20% 15%, rgba(0,255,140,0.18), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(0,255,200,0.10), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(0,120,60,0.22), transparent 62%);
+  filter: blur(18px);
+}
+
+.matrix-panel{
+  box-shadow:
+    0 0 0 1px rgba(0,255,140,0.12),
+    0 0 35px rgba(0,255,140,0.20),
+    0 0 120px rgba(0,255,140,0.10);
+}
+
+.matrix-glow{
+  text-shadow:
+    0 0 6px rgba(0,255,140,0.85),
+    0 0 16px rgba(0,255,140,0.55),
+    0 0 34px rgba(0,255,140,0.35),
+    0 0 70px rgba(0,255,140,0.22);
+  animation: matrix-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes matrix-pulse{
+  0%,100% { filter: saturate(1.0) brightness(1.0); }
+  50%     { filter: saturate(1.35) brightness(1.18); }
+}
+
+.scanlines{
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.08) 0px,
+    rgba(255,255,255,0.08) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+/* matrix-bold:end */
+
+/* cosmic-matrix:base:start */
+:root{
+  --cm-bg: 0 0 0;
+  --cm-ink: 220 255 236;
+  --cm-accent: 0 255 140;       /* matrix green */
+  --cm-accent2: 0 255 255;      /* cyan */
+  --cm-accent3: 255 51 204;     /* magenta */
+}
+
+html, body { height: 100%; }
+body { background: rgb(var(--cm-bg)); color: rgb(var(--cm-ink)); }
+
+::selection{ background: rgba(0,255,140,0.25); }
+
+.cm-root{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: rgb(var(--cm-bg));
+}
+
+.cm-skip{
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,255,140,0.35);
+  background: rgba(0,0,0,0.75);
+  color: rgba(220,255,236,0.95);
+  border-radius: 12px;
+  transform: translateY(-140%);
+  transition: transform 150ms ease;
+  z-index: 50;
+}
+.cm-skip:focus{ transform: translateY(0); outline: none; box-shadow: 0 0 0 3px rgba(0,255,140,0.25); }
+
+.cm-fx{ pointer-events:none; position:absolute; inset:0; }
+.cm-stars{
+  position:absolute; inset:0; opacity:0.55;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.30) 1px, transparent 1px),
+    radial-gradient(rgba(0,255,140,0.20) 1px, transparent 1px),
+    radial-gradient(rgba(0,255,255,0.14) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px, 7px 7px;
+  background-position: 0 0, 30px 80px, 160px 20px;
+  animation: cm-drift 24s linear infinite;
+}
+@keyframes cm-drift{
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-160px,240px,0); }
+}
+
+.cm-nebula{
+  position:absolute; inset:-20%;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255,51,204,0.16), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(0,255,255,0.14), transparent 58%),
+    radial-gradient(circle at 55% 45%, rgba(0,255,140,0.12), transparent 60%);
+  filter: blur(22px);
+}
+
+.cm-grid{
+  position:absolute; inset:0; opacity:0.22;
+  background:
+    linear-gradient(rgba(0,255,140,0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,140,0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: cm-grid 18s linear infinite;
+}
+@keyframes cm-grid{
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-96px,48px,0); }
+}
+
+.cm-scanlines{
+  position:absolute; inset:0; opacity:0.14;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.08) 0px,
+    rgba(255,255,255,0.08) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+.cm-vignette{
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.92) 100%);
+}
+
+.cm-shell{
+  position: relative;
+  z-index: 10;
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.cm-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0,255,140,0.22);
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+  background: rgba(0,0,0,0.62);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 0 1px rgba(0,255,140,0.08),
+    0 0 40px rgba(0,255,140,0.18);
+}
+
+.cm-brand{ display:flex; align-items:baseline; gap: 10px; flex-wrap:wrap; }
+.cm-mark{
+  font-weight: 900;
+  letter-spacing: 0.38em;
+  color: rgba(0,255,140,0.95);
+  text-shadow:
+    0 0 6px rgba(0,255,140,0.85),
+    0 0 18px rgba(0,255,140,0.45),
+    0 0 48px rgba(0,255,140,0.18);
+}
+.cm-title{
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: rgba(220,255,236,0.92);
+}
+.cm-sub{
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: rgba(0,255,255,0.62);
+}
+
+.cm-status{ display:flex; align-items:center; gap:10px; }
+.cm-dot{
+  width: 10px; height: 10px; border-radius: 999px;
+  background: rgba(0,255,140,0.95);
+  box-shadow: 0 0 10px rgba(0,255,140,0.75), 0 0 30px rgba(0,255,140,0.25);
+}
+.cm-statusText{ font-size: 12px; letter-spacing: 0.22em; color: rgba(220,255,236,0.75); }
+
+.cm-main{
+  padding: 18px 16px 22px;
+  border: 1px solid rgba(0,255,140,0.22);
+  border-radius: 0 0 18px 18px;
+  background: rgba(0,0,0,0.58);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 0 1px rgba(0,255,140,0.06),
+    0 0 70px rgba(0,255,140,0.10);
+}
+
+.cm-footer{
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(220,255,236,0.55);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .cm-stars, .cm-grid{ animation: none !important; }
+}
+/* cosmic-matrix:base:end */
+

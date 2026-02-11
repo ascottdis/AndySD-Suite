@@ -1,0 +1,3 @@
+module.exports=[62531,a=>{"use strict";var b=a.i(25619);function c({children:a}){return(0,b.jsxs)("div",{style:{minHeight:"100vh"},children:[(0,b.jsx)("header",{style:{padding:16,borderBottom:"1px solid rgba(255,255,255,0.1)"},children:(0,b.jsxs)("nav",{style:{display:"flex",gap:12,alignItems:"center"},children:[(0,b.jsx)("a",{href:"/",style:{textDecoration:"none"},children:"← Studio"}),(0,b.jsx)("a",{href:"/portal",style:{textDecoration:"none",fontWeight:700},children:"Portal"}),(0,b.jsx)("span",{style:{opacity:.6},children:"Private App Vault"})]})}),(0,b.jsx)("div",{style:{padding:24},children:a})]})}a.s(["default",()=>c])}];
+
+//# sourceMappingURL=andysd-suite_apps_suite_app_portal_layout_tsx_f721771c._.js.map

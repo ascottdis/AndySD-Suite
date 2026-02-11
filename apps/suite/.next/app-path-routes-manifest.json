@@ -1,0 +1,13 @@
+{
+  "/(flip)/flippin/page": "/flippin",
+  "/(labs)/labs/flippin/mock-research/export/route": "/labs/flippin/mock-research/export",
+  "/(labs)/labs/flippin/mock-research/page": "/labs/flippin/mock-research",
+  "/(labs)/labs/page": "/labs",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/portal/[app]/page": "/portal/[app]",
+  "/portal/page": "/portal",
+  "/work/[slug]/page": "/work/[slug]",
+  "/work/page": "/work"
+}

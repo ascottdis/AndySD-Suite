@@ -1,0 +1,18 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(labs)/layout,_N_T_/(labs)/labs/layout,_N_T_/(labs)/labs/flippin/layout,_N_T_/(labs)/labs/flippin/mock-research/layout,_N_T_/(labs)/labs/flippin/mock-research/page,_N_T_/labs/flippin/mock-research"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KGxhYnMp/labs/flippin/mock-research/__PAGE__",
+    "/!KGxhYnMp/labs/flippin/mock-research",
+    "/!KGxhYnMp/labs/flippin",
+    "/!KGxhYnMp/labs",
+    "/!KGxhYnMp",
+    "/_index",
+    "/_head"
+  ]
+}

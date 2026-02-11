@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(flip)/layout,_N_T_/(flip)/flippin/layout,_N_T_/(flip)/flippin/page,_N_T_/flippin"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KGZsaXAp/flippin/__PAGE__",
+    "/!KGZsaXAp/flippin",
+    "/!KGZsaXAp",
+    "/_index",
+    "/_head"
+  ]
+}

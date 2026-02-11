@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["next", "next/image-types"],
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "baseUrl": "."
+  },
+  "include": ["next-env.d.ts", "app", "components", "lib"],
+  "exclude": ["node_modules"]
+}

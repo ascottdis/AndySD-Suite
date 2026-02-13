@@ -1,0 +1,26 @@
+
+> giggin-app@1.0.0 build C:\Users\Andy\andysd-suite\apps\giggin-app
+> next build
+
+   ▲ Next.js 14.1.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/gigs/page.tsx:72:12
+Type error: 'Link' cannot be used as a JSX component.
+  Its type 'ForwardRefExoticComponent<Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof InternalLinkProps> & InternalLinkProps & { ...; } & RefAttributes<...>>' is not a valid JSX element type.
+    Type 'ForwardRefExoticComponent<Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof InternalLinkProps> & InternalLinkProps & { ...; } & RefAttributes<...>>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'React.ReactNode' is not assignable to type 'import("C:/Users/Andy/andysd-suite/node_modules/.pnpm/@types+react@18.3.27/node_modules/@types/react/index").ReactNode'.
+        Type 'bigint' is not assignable to type 'ReactNode'.
+
+[0m [90m 70 |[39m[0m
+[0m [90m 71 |[39m         [33m<[39m[33mdiv[39m style[33m=[39m{{ display[33m:[39m [32m"flex"[39m[33m,[39m gap[33m:[39m [35m12[39m }}[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 72 |[39m           [33m<[39m[33mLink[39m[0m
+[0m [90m    |[39m            [31m[1m^[22m[39m[0m
+[0m [90m 73 |[39m             href[33m=[39m[32m"/gigs/new"[39m[0m
+[0m [90m 74 |[39m             style[33m=[39m{{ padding[33m:[39m [32m"0.6rem 1rem"[39m[33m,[39m borderRadius[33m:[39m [35m10[39m[33m,[39m background[33m:[39m [32m"#111"[39m[33m,[39m color[33m:[39m [32m"#fff"[39m[33m,[39m textDecoration[33m:[39m [32m"none"[39m }}[0m
+[0m [90m 75 |[39m           [33m>[39m[0m
+ ELIFECYCLE  Command failed with exit code 1.

@@ -11,3 +11,10 @@ coverage
 .prisma
 .vercel
 .env*.local
+flippin-app-repo/
+gig_optimizer/
+gig_optimizer_broken_20260210_145837/
+gig_optimizer_broken_20260210_150319/
+gig_optimizer_broken_20260210_151210/
+gig_optimizer_broken_20260211_004452/
+packages/utils/
